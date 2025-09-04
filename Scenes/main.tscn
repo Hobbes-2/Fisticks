@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://ce5sr0vvubeyj"]
+
+[ext_resource type="PackedScene" uid="uid://2frmar6v358" path="res://Scenes/player_1.tscn" id="2_bo1nx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_bo1nx"]
+sky_material = SubResource("ProceduralSkyMaterial_jjgbg")
+
+[sub_resource type="Environment" id="Environment_8gbba"]
+background_mode = 2
+sky = SubResource("Sky_bo1nx")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jjgbg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jjgbg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bo1nx"]
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8gbba")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player1" parent="." instance=ExtResource("2_bo1nx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="Camera3D2" type="Camera3D" parent="Player1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(3.1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(8.94955, 0, 0, 0, 1, 0, 0, 0, 6.1, 0, -2.10735, -3.21055)
+shape = SubResource("BoxShape3D_jjgbg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D"]
+mesh = SubResource("BoxMesh_jjgbg")
+skeleton = NodePath("../../..")
+
+[node name="BackWall" type="StaticBody3D" parent="."]
+transform = Transform3D(3.1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(8.94955, 0, 0, 0, -4.37114e-08, 6.1, 0, -1, -2.66639e-07, 0, -0.107346, -6.21055)
+shape = SubResource("BoxShape3D_bo1nx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BackWall/CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 0, 4.44089e-16, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_jjgbg")
+skeleton = NodePath("../../..")

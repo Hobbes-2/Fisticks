@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://npoy876g3jby"]
+
+[node name="TitleScreen" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 544.0
+offset_top = 396.0
+offset_right = 614.0
+offset_bottom = 427.0
+text = "button1"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 544.0
+offset_top = 451.0
+offset_right = 614.0
+offset_bottom = 482.0
+text = "button2"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 542.0
+offset_top = 509.0
+offset_right = 612.0
+offset_bottom = 540.0
+text = "button3"
