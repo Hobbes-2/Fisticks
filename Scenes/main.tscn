@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ce5sr0vvubeyj"]
+[gd_scene load_steps=10 format=3 uid="uid://ce5sr0vvubeyj"]
 
+[ext_resource type="PackedScene" uid="uid://bvcl0ijif4ctd" path="res://Scenes/player_2.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://2frmar6v358" path="res://Scenes/player_1.tscn" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://c3fbetr4xbgj5" path="res://Scenes/camera_controller.gd" id="3_8gbba"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -31,13 +33,13 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="Player1" parent="." instance=ExtResource("2_bo1nx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
 
-[node name="Camera3D2" type="Camera3D" parent="Player1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+[node name="Player2" parent="." instance=ExtResource("2_8gbba")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, -2)
 
 [node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(3.1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(3.1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 transform = Transform3D(8.94955, 0, 0, 0, 1, 0, 0, 0, 6.1, 0, -2.10735, -3.21055)
@@ -48,13 +50,21 @@ mesh = SubResource("BoxMesh_jjgbg")
 skeleton = NodePath("../../..")
 
 [node name="BackWall" type="StaticBody3D" parent="."]
-transform = Transform3D(3.1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(3.1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BackWall"]
 transform = Transform3D(8.94955, 0, 0, 0, -4.37114e-08, 6.1, 0, -1, -2.66639e-07, 0, -0.107346, -6.21055)
 shape = SubResource("BoxShape3D_bo1nx")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="BackWall/CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 0, 4.44089e-16, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 0, 8.88178e-16, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_jjgbg")
 skeleton = NodePath("../../..")
+
+[node name="CameraController" type="Node3D" parent="." node_paths=PackedStringArray("player1", "player2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+script = ExtResource("3_8gbba")
+player1 = NodePath("../Player1")
+player2 = NodePath("../Player2")
+
+[node name="Camera3D2" type="Camera3D" parent="CameraController"]

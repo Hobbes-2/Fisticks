@@ -1,11 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://2frmar6v358"]
+[gd_scene load_steps=5 format=3 uid="uid://2frmar6v358"]
 
 [ext_resource type="Script" uid="uid://dqwkni2gtfme6" path="res://Scripts/player_1.gd" id="1_2mvbs"]
+[ext_resource type="ArrayMesh" uid="uid://iuukx63ioh3y" path="res://images/Stickman1.obj" id="2_tmdyv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmdyv"]
+size = Vector3(1, 7, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p0e4v"]
+size = Vector3(5, 4, 1)
 
 [node name="Player1" type="CharacterBody3D"]
 script = ExtResource("1_2mvbs")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0, 1.77636e-15, 0, 0.2, 0, -1.77636e-15, 0, 0.2, 1.69407e-21, 0.5, 2.84217e-14)
 shape = SubResource("BoxShape3D_tmdyv")
+
+[node name="Stickman1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 0, -2.83122e-07)
+mesh = ExtResource("2_tmdyv")
+
+[node name="Punch Area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00906, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Punch Area"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.4, -0.3, 0)
+shape = SubResource("BoxShape3D_p0e4v")
+
+[node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -7.45058e-09, -0.5, 0)
+shape = SubResource("BoxShape3D_tmdyv")
+
+[node name="PunchTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

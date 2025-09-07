@@ -1,17 +1,16 @@
 extends CharacterBody3D
 
-@onready var punch_area: Area3D = $"Punch Area"
-@onready var collision_shape_3d: CollisionShape3D = $"Punch Area/CollisionShape3D"
 @onready var punch_timer: Timer = $PunchTimer
+@onready var collision_shape_3d: CollisionShape3D = $"Punch Area/CollisionShape3D"
+
+var health = 3
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4
 
-var health = 3
-
-
 func _ready() -> void:
 	collision_shape_3d.disabled = true
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -19,11 +18,18 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	var movement_dir = (
-		Input.get_action_strength("P1Left") -
-		Input.get_action_strength("P1Right")
+		Input.get_action_strength("P2Left") -
+		Input.get_action_strength("P2Right")
 	)
 
-	if Input.is_action_just_pressed("P1Punch") and punch_timer.timeout:
+	# Handle jump.
+	if Input.is_action_just_pressed("P2Jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var input_dir := Input.get_vector("P2Left", "P2Right", "ui_up", "ui_down")
+	if Input.is_action_just_pressed("P2Punch") and punch_timer.timeout:
 		punch_timer.start()
 		collision_shape_3d.disabled = false
 		await get_tree().create_timer(0.1).timeout
@@ -45,7 +51,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_hit_box_area_entered(area: Area3D) -> void:
-	print("Player1 Health = " + str(health))
+	print("Player2 Health = " + str(health))
 	health -= 1
 	if health == 0:
-		print("Player1 Died")
+		print("Player2 Died")
