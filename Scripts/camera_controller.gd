@@ -3,6 +3,9 @@ extends Node3D
 @export var player1 : CharacterBody3D
 @export var player2 : CharacterBody3D
 @onready var camera : Camera3D = $Camera3D2
+@onready var mid_point_mesh: MeshInstance3D = $"../MidPoint"
+
+@export var debug : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,11 +16,23 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#camera.position.z = abs(player1.global_position.x - player2.global_position.x) * 0.2
 	#print(abs(player1.global_position.x - player2.global_position.x))
-	var player_x = player1.global_position.x + player2.global_position.x
-	var new_position = global_position
-	new_position.x = player_x
-	global_position = new_position
-#
+
+	#var player_x = player1.global_position.x + player2.global_position.x
+	#var new_position = global_position
+	#new_position.x = player_x
+	#global_position = new_position
+
+
+	var mid_point = (player1.global_position.x + player2.global_position.x) / 2
+
+	#global_position.x = mid_point
+	mid_point_mesh.global_position.x = mid_point
+	if debug == true:
+		print(mid_point)
+
+	camera.global_position.z = abs(player1.global_position.x - player2.global_position.x) / 3.5
+	camera.global_position.x = mid_point
+
 #@export var move_speed = 30
 #@export var zoom_speed = 3.0
 #@export var min_zoom = 5.0
