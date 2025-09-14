@@ -6,10 +6,10 @@ extends CharacterBody3D
 @onready var punch_collision: CollisionShape3D = $"Punch Area/PunchCollision"
 @onready var hit_collision: CollisionShape3D = $HitBox/HitCollision
 
-var health = 3
+var health = 300
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4
+const JUMP_VELOCITY = 7
 
 func _ready() -> void:
 	punch_collision.disabled = true

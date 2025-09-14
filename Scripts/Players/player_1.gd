@@ -10,9 +10,9 @@ extends CharacterBody3D
 @export var debug : bool
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4
+const JUMP_VELOCITY = 7
 
-var health = 3
+var health = 300
 
 var current_timestamp = 0
 #Time.get_time_msec() or something

@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://2frmar6v358"]
+[gd_scene load_steps=7 format=3 uid="uid://2frmar6v358"]
 
-[ext_resource type="Script" uid="uid://dqwkni2gtfme6" path="res://Scripts/player_1.gd" id="1_2mvbs"]
+[ext_resource type="Script" uid="uid://dqwkni2gtfme6" path="res://Scripts/Players/player_1.gd" id="1_2mvbs"]
 [ext_resource type="ArrayMesh" uid="uid://iuukx63ioh3y" path="res://Models/Stickman1.obj" id="2_tmdyv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmdyv"]
-size = Vector3(0.2, 1.4, 0.2)
+size = Vector3(0.190381, 1.4, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p0e4v"]
 size = Vector3(3, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ifihs"]
+size = Vector3(0.159241, 1.33978, 0.189819)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p2y3g"]
 size = Vector3(0.25, 0.75, 0.25)
@@ -34,8 +37,8 @@ shape = SubResource("BoxShape3D_p0e4v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="HitCollision" type="CollisionShape3D" parent="HitBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.45058e-09, -0.5, 0)
-shape = SubResource("BoxShape3D_tmdyv")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00186566, -0.52399, -0.000183105)
+shape = SubResource("BoxShape3D_ifihs")
 
 [node name="PunchTimer" type="Timer" parent="."]
 wait_time = 0.5

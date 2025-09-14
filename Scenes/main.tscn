@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://ce5sr0vvubeyj"]
+[gd_scene load_steps=18 format=3 uid="uid://ce5sr0vvubeyj"]
 
 [ext_resource type="PackedScene" uid="uid://bvcl0ijif4ctd" path="res://Scenes/Players/Player 2/player_2.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://2frmar6v358" path="res://Scenes/Players/Player 1/player_1.tscn" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://c3fbetr4xbgj5" path="res://Scripts/camera_controller.gd" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://28it22qxj50c" path="res://images/icon.svg" id="3_kry3j"]
 [ext_resource type="Texture2D" uid="uid://bkqv5mmp0ataj" path="res://images/icon.jpg" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://dspynvsmnytk1" path="res://Scenes/platform.tscn" id="6_21xkr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -20,7 +21,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jjgbg"]
-size = Vector3(12, 1, 6)
+size = Vector3(16, 1, 6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jjgbg"]
 
@@ -33,6 +34,10 @@ albedo_texture = ExtResource("3_kry3j")
 albedo_texture = ExtResource("4_jjvhh")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8gbba"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kry3j"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_21xkr"]
 
 [node name="Main" type="Node3D"]
 
@@ -57,7 +62,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -2.10735, -2.71055)
 shape = SubResource("BoxShape3D_jjgbg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor/CollisionShape3D"]
-transform = Transform3D(12.1, 0, 0, 0, 1, 0, 0, 0, 6.075, 0, 0, 0)
+transform = Transform3D(15.73, 0, 0, 0, 1, 0, 0, 0, 6.075, 0, 0, 0)
 mesh = SubResource("BoxMesh_jjgbg")
 skeleton = NodePath("../../..")
 
@@ -86,3 +91,16 @@ player2 = NodePath("../Player2")
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.1, -2)
 material_override = SubResource("StandardMaterial3D_kry3j")
 mesh = SubResource("CapsuleMesh_8gbba")
+
+[node name="Platform2" type="StaticBody3D" parent="."]
+transform = Transform3D(2.6, 0, 0, 0, 0.2, 0, 0, 0, 1, 2.6, 1.4, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform2"]
+shape = SubResource("BoxShape3D_kry3j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform2/CollisionShape3D"]
+mesh = SubResource("BoxMesh_21xkr")
+
+[node name="Platform" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_21xkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -2)
+player = NodePath("../Player1")
