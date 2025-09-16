@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://28it22qxj50c" path="res://images/icon.svg" id="2_dbqaj"]
 
 [node name="TestCard" type="Node2D"]
+visible = false
 script = ExtResource("1_4qg8t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

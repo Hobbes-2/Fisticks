@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://futp2yl0qwsq"]
+
+[ext_resource type="Texture2D" uid="uid://cfu7an1plyutm" path="res://images/p1_select.png" id="1_i4d8v"]
+[ext_resource type="Script" uid="uid://sopucq2qdl2p" path="res://curson_p_1.gd" id="2_iyryb"]
+[ext_resource type="Texture2D" uid="uid://28it22qxj50c" path="res://images/icon.svg" id="4_o6d7f"]
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CursonP1" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-512, -256)
+scale = Vector2(4, 4)
+texture = ExtResource("1_i4d8v")
+script = ExtResource("2_iyryb")
+player1Text = ExtResource("1_i4d8v")
+player2Text = ExtResource("1_i4d8v")
+portraitOffset = Vector2(128, 128)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = -576.0
+offset_top = -320.0
+offset_right = 574.0
+offset_bottom = 330.0
+columns = 2
+
+[node name="Orange" type="TextureRect" parent="GridContainer" groups=["Characters"]]
+layout_mode = 2
+texture = ExtResource("4_o6d7f")
+stretch_mode = 2
+
+[node name="Red" type="TextureRect" parent="GridContainer" groups=["Characters"]]
+layout_mode = 2
+texture = ExtResource("4_o6d7f")
+
+[node name="Green" type="TextureRect" parent="GridContainer" groups=["Characters"]]
+layout_mode = 2
+texture = ExtResource("4_o6d7f")
+
+[node name="Blue" type="TextureRect" parent="GridContainer" groups=["Characters"]]
+layout_mode = 2
+texture = ExtResource("4_o6d7f")
+
+[node name="Camera2D" type="Camera2D" parent="."]

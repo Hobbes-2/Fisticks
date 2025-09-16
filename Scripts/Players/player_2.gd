@@ -5,17 +5,32 @@ extends CharacterBody3D
 @onready var crouching_collision: CollisionShape3D = $CrouchingCollision
 @onready var punch_collision: CollisionShape3D = $"Punch Area/PunchCollision"
 @onready var hit_collision: CollisionShape3D = $HitBox/HitCollision
+@export var player1 : CharacterBody3D
+@export var low_death : Area3D
 
-var health = 300
+@export var debug : bool
+
+var health = 10
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 7
+
+var going_left : bool = false
+var going_right : bool = false
+
+var current_timestamp = 0
+
+var damage = 1
 
 func _ready() -> void:
 	punch_collision.disabled = true
 
 
 func _physics_process(delta: float) -> void:
+	current_timestamp += delta * 1000
+	if debug == true:
+		print(current_timestamp)
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -44,6 +59,35 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+	if going_left == true and Input.is_action_just_pressed("P2Left"):
+		rotation_degrees.y = -180
+		going_left = false
+		print("P2 Double Left")
+		position.x -= 1
+	else:
+		if Input.is_action_just_pressed("P2Left"):
+			rotation_degrees.y = -180
+			if debug == true:
+				print("left")
+			current_timestamp = 0
+			going_left = true
+	if current_timestamp >= 500:
+		going_left = false
+
+	if going_right == true and Input.is_action_just_pressed("P2Right"):
+		rotation_degrees.y = 0
+		going_right = false
+		print("P2 Double Right")
+		position.x += 1
+	else:
+		if Input.is_action_just_pressed("P2Right"):
+			rotation_degrees.y = 0
+			if debug == true:
+				print("right")
+			current_timestamp = 0
+			going_right = true
+	if current_timestamp >= 500:
+		going_right = false
 
 
 	move_and_slide()
@@ -65,7 +109,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_hit_box_area_entered(area: Area3D) -> void:
 	print("Player2 Health = " + str(health))
-	health -= 1
+	health -= player1.damage
 	if health == 0:
 		print("Player2 Died")
 

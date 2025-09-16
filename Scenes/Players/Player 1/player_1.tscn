@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://2frmar6v358"]
+[gd_scene load_steps=10 format=3 uid="uid://2frmar6v358"]
 
 [ext_resource type="Script" uid="uid://dqwkni2gtfme6" path="res://Scripts/Players/player_1.gd" id="1_2mvbs"]
+[ext_resource type="Texture2D" uid="uid://dmjcvfupo1ad2" path="res://prototype_textures/textures/orange_texture.png" id="2_ifihs"]
 [ext_resource type="ArrayMesh" uid="uid://iuukx63ioh3y" path="res://Models/Stickman1.obj" id="2_tmdyv"]
+[ext_resource type="AudioStream" uid="uid://dtbnt2yaa60pi" path="res://Audio/SFX/HitSFX1.mp3" id="4_ru8ij"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmdyv"]
 size = Vector3(0.190381, 1.4, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ru8ij"]
+albedo_texture = ExtResource("2_ifihs")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p0e4v"]
 size = Vector3(3, 2, 1)
@@ -24,6 +29,7 @@ shape = SubResource("BoxShape3D_tmdyv")
 
 [node name="Stickman1" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 0, -2.83122e-07)
+material_override = SubResource("StandardMaterial3D_ru8ij")
 mesh = ExtResource("2_tmdyv")
 
 [node name="Punch Area" type="Area3D" parent="."]
@@ -47,5 +53,8 @@ wait_time = 0.5
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.08, 0)
 shape = SubResource("BoxShape3D_p2y3g")
 disabled = true
+
+[node name="Sounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ru8ij")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

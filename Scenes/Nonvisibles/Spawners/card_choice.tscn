@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://j6p0omuydtgx"]
+[gd_scene load_steps=2 format=3 uid="uid://j6p0omuydtgx"]
+
+[ext_resource type="Script" uid="uid://coqmbbgapjjpa" path="res://Scripts/card_choice.gd" id="1_0ku4r"]
 
 [node name="CardChoice" type="Node2D"]
+script = ExtResource("1_0ku4r")
+
+[node name="Card1Spawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="Card2Spawn" type="Node3D" parent="."]
+
+[node name="Card3Spawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

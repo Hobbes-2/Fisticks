@@ -15,6 +15,10 @@ run/main_scene="uid://ce5sr0vvubeyj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://images/icon.svg"
 
+[autoload]
+
+CharacterSelectionManager="*res://Scripts/CharacterSelectionManager.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
