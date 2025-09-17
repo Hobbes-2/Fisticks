@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciro7bvr00w8a"]
+
+[ext_resource type="Script" uid="uid://cty4p2qon20at" path="res://Scripts/Cards/speed_ii.gd" id="1_frjac"]
+[ext_resource type="Texture2D" uid="uid://cs7awaklvp84c" path="res://images/Cards/SpeedII.png" id="2_frjac"]
+
+[node name="SpeedII" type="Node2D"]
+script = ExtResource("1_frjac")
+
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+offset_left = 448.0
+offset_top = 192.0
+offset_right = 640.0
+offset_bottom = 448.0
+icon = ExtResource("2_frjac")
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

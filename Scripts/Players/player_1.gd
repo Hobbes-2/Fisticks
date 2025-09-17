@@ -13,11 +13,11 @@ extends CharacterBody3D
 
 #SPEED AND SPEED MODIFIERS
 var SPEED
-const NORMAL_SPEED = 5.0
-const DODGE_SPEED = 10.0
-const CROUCHING_SPEED = 4.0
+var NORMAL_SPEED = GlobalCards.player1Speed
+var DODGE_SPEED = NORMAL_SPEED * 2
+var CROUCHING_SPEED = NORMAL_SPEED / 2
 const JUMP_VELOCITY = 7
-var health = 10
+var health = GlobalCards.player1Health
 
 var going_left : bool = false
 var going_right : bool = false
@@ -25,7 +25,7 @@ var going_right : bool = false
 var current_timestamp = 0
 
 #DAMAGE MODIFIERS
-var damage = 1
+var damage = GlobalCards.player1Damage
 
 #Time.get_time_msec() or something
 func _ready() -> void:
@@ -62,7 +62,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if going_left == true and Input.is_action_just_pressed("P1Left"):
+	if going_left == true and Input.is_action_just_pressed("P1Left") and is_on_floor():
 		rotation_degrees.y = 180
 		going_left = false
 		print("P1 Double Left")
@@ -86,7 +86,7 @@ func _physics_process(delta: float) -> void:
 	if current_timestamp >= 500:
 		going_left = false
 
-	if going_right == true and Input.is_action_just_pressed("P1Right"):
+	if going_right == true and Input.is_action_just_pressed("P1Right") and is_on_floor():
 		rotation_degrees.y = 0
 		going_right = false
 		print("P1 Double Right")

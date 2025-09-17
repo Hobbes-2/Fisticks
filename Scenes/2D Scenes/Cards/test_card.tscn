@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d35odjaravqeo"]
 
 [ext_resource type="Script" uid="uid://dbgvbdl4t7wkf" path="res://Scripts/Cards/test_card.gd" id="1_4qg8t"]
-[ext_resource type="Texture2D" uid="uid://28it22qxj50c" path="res://images/icon.svg" id="2_dbqaj"]
+[ext_resource type="Texture2D" uid="uid://28it22qxj50c" path="res://images/Misc/icon.svg" id="2_dbqaj"]
 
 [node name="TestCard" type="Node2D"]
 visible = false

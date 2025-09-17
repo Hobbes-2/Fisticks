@@ -1,19 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://du0dp2alg6qvp"]
 
 [ext_resource type="Script" uid="uid://bm5x5e7e6o6to" path="res://Scripts/Cards/damage_i.gd" id="1_7huso"]
-[ext_resource type="Texture2D" uid="uid://28it22qxj50c" path="res://images/icon.svg" id="2_e78l1"]
+[ext_resource type="Texture2D" uid="uid://bf0m5ffpjqqqe" path="res://images/Cards/DamageI.png" id="2_7huso"]
 
 [node name="DamageI" type="Node2D"]
 script = ExtResource("1_7huso")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
 [node name="Button" type="Button" parent="."]
+texture_filter = 1
 offset_left = 448.0
 offset_top = 192.0
 offset_right = 640.0
 offset_bottom = 448.0
-icon = ExtResource("2_e78l1")
+icon = ExtResource("2_7huso")
 icon_alignment = 1
+expand_icon = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,15 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://ce5sr0vvubeyj"]
+[gd_scene load_steps=20 format=3 uid="uid://ce5sr0vvubeyj"]
 
 [ext_resource type="PackedScene" uid="uid://bvcl0ijif4ctd" path="res://Scenes/Players/Player 2/player_2.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://2frmar6v358" path="res://Scenes/Players/Player 1/player_1.tscn" id="2_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://dp2igg8xokhg4" path="res://prototype_textures/textures/green_texture.png" id="3_6bp64"]
 [ext_resource type="Script" uid="uid://c3fbetr4xbgj5" path="res://Scripts/camera_controller.gd" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://dyyyckn5caub8" path="res://prototype_textures/textures/blue_texture.png" id="4_344ge"]
-[ext_resource type="Texture2D" uid="uid://bkqv5mmp0ataj" path="res://images/icon.jpg" id="4_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://bkqv5mmp0ataj" path="res://images/Misc/icon.jpg" id="4_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://dspynvsmnytk1" path="res://Scenes/platform.tscn" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://dgt52bh7hiyyj" path="res://Scenes/Nonvisibles/low_death.tscn" id="8_344ge"]
 [ext_resource type="AudioStream" uid="uid://bftmucysq4g5s" path="res://Audio/Music/game-background-359782.mp3" id="9_ynf5e"]
-[ext_resource type="PackedScene" uid="uid://j6p0omuydtgx" path="res://Scenes/Nonvisibles/Spawners/card_choice.tscn" id="10_hptm8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jjgbg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -137,6 +136,3 @@ player = NodePath("../Player1")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ynf5e")
 autoplay = true
-
-[node name="CardChoice" parent="." node_paths=PackedStringArray("player1") instance=ExtResource("10_hptm8")]
-player1 = NodePath("../Player1")

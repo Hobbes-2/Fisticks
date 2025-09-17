@@ -5,10 +5,20 @@
 [node name="CardChoice" type="Node2D"]
 script = ExtResource("1_0ku4r")
 
-[node name="Card1Spawn" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+[node name="Card1Spawn" type="Node2D" parent="."]
+position = Vector2(-100, 0)
 
-[node name="Card2Spawn" type="Node3D" parent="."]
+[node name="Card2Spawn" type="Node2D" parent="."]
 
-[node name="Card3Spawn" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+[node name="Card3Spawn" type="Node2D" parent="."]
+position = Vector2(100, 0)
+
+[node name="Label3D" type="Label" parent="."]
+offset_left = 456.0
+offset_top = 64.0
+offset_right = 687.0
+offset_bottom = 87.0
+text = "Super Shifty Shiba Card Select"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 320)

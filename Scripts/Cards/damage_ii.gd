@@ -1,6 +1,6 @@
 extends Node2D
 
-var damage_buff = 1
+var damage_buff = 2
 var health_buff = 0
 var speed_buff = 0
 

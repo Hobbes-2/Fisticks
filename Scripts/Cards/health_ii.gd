@@ -1,7 +1,7 @@
 extends Node2D
 
-var damage_buff = 1
-var health_buff = 0
+var damage_buff = 0
+var health_buff = 2
 var speed_buff = 0
 
 @export var player1 : CharacterBody3D

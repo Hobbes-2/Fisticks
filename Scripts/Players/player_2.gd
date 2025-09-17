@@ -7,23 +7,28 @@ extends CharacterBody3D
 @onready var hit_collision: CollisionShape3D = $HitBox/HitCollision
 @export var player1 : CharacterBody3D
 @export var low_death : Area3D
+@onready var sounds: AudioStreamPlayer = $Sounds
 
 @export var debug : bool
 
-var health = 10
-
-const SPEED = 5.0
+var SPEED
+var NORMAL_SPEED = GlobalCards.player2Speed
+var DODGE_SPEED = NORMAL_SPEED * 2
+var CROUCHING_SPEED = NORMAL_SPEED / 2
 const JUMP_VELOCITY = 7
+var health = GlobalCards.player2Health
 
 var going_left : bool = false
 var going_right : bool = false
 
 var current_timestamp = 0
 
-var damage = 1
+#DAMAGE MODIFIERS
+var damage = GlobalCards.player1Damage
 
 func _ready() -> void:
 	punch_collision.disabled = true
+	SPEED = NORMAL_SPEED
 
 
 func _physics_process(delta: float) -> void:
@@ -59,7 +64,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	if going_left == true and Input.is_action_just_pressed("P2Left"):
+	if going_left == true and Input.is_action_just_pressed("P2Left") and is_on_floor():
 		rotation_degrees.y = -180
 		going_left = false
 		print("P2 Double Left")
@@ -74,7 +79,7 @@ func _physics_process(delta: float) -> void:
 	if current_timestamp >= 500:
 		going_left = false
 
-	if going_right == true and Input.is_action_just_pressed("P2Right"):
+	if going_right == true and Input.is_action_just_pressed("P2Right") and is_on_floor():
 		rotation_degrees.y = 0
 		going_right = false
 		print("P2 Double Right")
@@ -109,9 +114,13 @@ func _physics_process(delta: float) -> void:
 
 func _on_hit_box_area_entered(area: Area3D) -> void:
 	print("Player2 Health = " + str(health))
-	health -= player1.damage
+	if area == low_death:
+		health = 0
+	else:
+		sounds.play()
+		health -= player1.damage
 	if health == 0:
 		print("Player2 Died")
 
 func death():
-	get_tree().change_scene_to_file("res://Scenes/Players/Player 1/p_1_win.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Players/Player 2/p_2_win.tscn")
