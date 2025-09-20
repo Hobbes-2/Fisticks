@@ -29,12 +29,22 @@ func _physics_process(delta: float) -> void:
 	if debug == true:
 		print(mid_point)
 
-	#camera.global_position.z = abs(player1.global_position.x - player2.global_position.x) / 3.aa5
-	camera.global_position.z = abs(player1.global_position.x - player1.global_position.y - player2.global_position.x - player1.global_position.y) / 5
+	#camera.global_position.z = abs(player1.global_position.x - player2.global_position.x) / 3.5
+	camera.global_position.z = abs(player1.global_position.x - player1.global_position.y - player2.global_position.x - player1.global_position.y) / 4 
 	camera.global_position.x = mid_point
+	#if mid_point_y > 3:
+	camera.global_position.y = mid_point_y
+	#else:
+		#camera.global_position.y -= mid_point_y / 1
 
 	if camera.global_position.z >= 15:
 		camera.global_position.z = 15
+	if camera.global_position.z <= 2:
+		camera.global_position.z = 2
+	if camera.global_position.y >= 3.5:
+		camera.global_position.y = 3.5
+	if camera.global_position.y <= 1:
+		camera.global_position.y = 1
 
 	p_1_health.text = "Player 1 Health = " + str(player1.health)
 	p_1_speed.text = "Player 1 Speed = " + str(player1.SPEED)

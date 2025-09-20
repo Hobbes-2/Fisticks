@@ -105,6 +105,14 @@ func _physics_process(delta: float) -> void:
 		#FIX THIS THIS IS NOT YET WORKING AND THE DOUBLE CLICK NEVER TRIGGERS
 	move_and_slide()
 
+	if Input.is_action_pressed("P1Left") or Input.is_action_pressed("P1Right"):
+		if Input.is_action_just_pressed("P1Punch"):
+			set_process_input(false)
+			await get_tree().create_timer(0.4).timeout
+			print("haiudfhas")
+			set_process_input(true)
+			
+
 	if Input.is_action_pressed("P1Crouch"):
 		SPEED = CROUCHING_SPEED
 		standing_collision.disabled = true
@@ -125,12 +133,19 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 	print("Player1 Health = " + str(health))
 	if area == low_death:
 		health = 0
-	else:
+		#IF YOU CHANGE ANY NODES OR ADD ANY NODES IN THE PLAYER TREE THEN CHECK TO MAKE SURE THIS STILL WORKS
+	elif area == player2.get_child(2):
 		sounds.play()
 		health -= player2.damage
+		#FRAME PAUSE CODE!
+		frameFreeze(0.05, 0.4)
+		await get_tree().create_timer(0.1 * 0.3).timeout
+		Engine.time_scale = 1.0
 	if health == 0:
 		print("Player1 Died")
 
+func frameFreeze(timeScale, duration):
+	Engine.time_scale = timeScale
 
 func death():
 	get_tree().change_scene_to_file("res://Scenes/Players/Player 2/p_2_win.tscn")

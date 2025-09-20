@@ -116,11 +116,19 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 	print("Player2 Health = " + str(health))
 	if area == low_death:
 		health = 0
-	else:
+		#IF YOU CHANGE ANY NODES OR ADD ANY NODES IN THE PLAYER TREE THEN CHECK TO MAKE SURE THIS STILL WORKS
+	elif area == player1.get_child(2):
 		sounds.play()
 		health -= player1.damage
+		#FRAME PAUSE CODE!
+		frameFreeze(0.05, 0.4)
+		await get_tree().create_timer(0.1 * 0.3).timeout
+		Engine.time_scale = 1.0
 	if health == 0:
 		print("Player2 Died")
 
+func frameFreeze(timeScale, duration):
+	Engine.time_scale = timeScale
+
 func death():
-	get_tree().change_scene_to_file("res://Scenes/Players/Player 2/p_2_win.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Players/Player 1/p_1_win.tscn")

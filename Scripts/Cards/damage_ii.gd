@@ -27,7 +27,7 @@ func _on_button_pressed() -> void:
 		GlobalCards.player1Health += health_buff
 		GlobalCards.player1Damage += damage_buff
 		GlobalCards.player1Speed += speed_buff
-	if p2_select == true:
+	if GlobalCards.player2_choice == true:
 		GlobalCards.player2Health += health_buff
 		GlobalCards.player2Damage += damage_buff
 		GlobalCards.player2Speed += speed_buff
