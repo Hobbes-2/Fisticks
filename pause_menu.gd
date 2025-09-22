@@ -1,16 +1,4 @@
-extends Node
-
-var card_chosen : bool = false
-
-#PLAYER VARIABLES
-var player1Health = 20
-var player1Damage = 1
-var player1Speed = 7
-
-var player2Health = 20
-var player2Damage = 1
-var player2Speed = 7
-var player2_choice : bool = false
+extends Node2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,3 +9,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_back_pressed() -> void:
+	hide()
+	Engine.time_scale = 1.0
+
+
+func _on_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/2D Scenes/title_screen.tscn")
+	Engine.time_scale = 1.0

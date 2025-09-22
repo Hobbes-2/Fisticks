@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvcl0ijif4ctd"]
+[gd_scene load_steps=11 format=3 uid="uid://bvcl0ijif4ctd"]
 
 [ext_resource type="Script" uid="uid://bohfmhda12pwu" path="res://Scripts/Players/player_2.gd" id="1_cgts5"]
 [ext_resource type="ArrayMesh" uid="uid://iuukx63ioh3y" path="res://Models/Stickman1.obj" id="2_a3adp"]
 [ext_resource type="Texture2D" uid="uid://cc40ifqew3i2s" path="res://prototype_textures/textures/red_texture.png" id="2_vb8ya"]
 [ext_resource type="AudioStream" uid="uid://dtbnt2yaa60pi" path="res://Audio/SFX/HitSFX1.mp3" id="4_jnrlm"]
+[ext_resource type="PackedScene" uid="uid://4k7u4s5o1dp3" path="res://Models/StickmanModel.tscn" id="5_o8sio"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cgts5"]
 size = Vector3(0.2, 1.4, 0.2)
@@ -12,7 +13,7 @@ size = Vector3(0.2, 1.4, 0.2)
 albedo_texture = ExtResource("2_vb8ya")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a3adp"]
-size = Vector3(3, 2, 1)
+size = Vector3(2.0175781, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vb8ya"]
 size = Vector3(0.166809, 1.34143, 0.183838)
@@ -31,6 +32,7 @@ shape = SubResource("BoxShape3D_cgts5")
 
 [node name="Stickman1" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.1, 0, -8.74228e-09, 0, 0.1, 0, 8.74228e-09, 0, -0.1, 0, 0, -2.83122e-07)
+visible = false
 material_override = SubResource("StandardMaterial3D_jnrlm")
 mesh = ExtResource("2_a3adp")
 
@@ -38,7 +40,7 @@ mesh = ExtResource("2_a3adp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
 
 [node name="PunchCollision" type="CollisionShape3D" parent="Punch Area"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.6, 0, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.68575776, 0, 0)
 shape = SubResource("BoxShape3D_a3adp")
 
 [node name="HitBox" type="Area3D" parent="."]
@@ -58,5 +60,8 @@ disabled = true
 
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_jnrlm")
+
+[node name="Stickman1NEW" parent="." instance=ExtResource("5_o8sio")]
+transform = Transform3D(-0.1, 0, -8.742278e-09, 0, 0.1, 0, 8.742278e-09, 0, -0.1, 0, 0, 0)
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

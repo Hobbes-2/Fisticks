@@ -1,17 +1,6 @@
-extends Node
+extends Node3D
 
-var card_chosen : bool = false
-
-#PLAYER VARIABLES
-var player1Health = 20
-var player1Damage = 1
-var player1Speed = 7
-
-var player2Health = 20
-var player2Damage = 1
-var player2Speed = 7
-var player2_choice : bool = false
-
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

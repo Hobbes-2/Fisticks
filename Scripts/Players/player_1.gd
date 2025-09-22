@@ -11,6 +11,9 @@ extends CharacterBody3D
 @export var debug : bool
 @onready var sounds: AudioStreamPlayer = $Sounds
 
+#ANIMATIONS AND MODEL STUFF
+@onready var stickman_1new: Node3D = $Stickman1NEW
+var animations
 #SPEED AND SPEED MODIFIERS
 var SPEED
 var NORMAL_SPEED = GlobalCards.player1Speed
@@ -31,6 +34,8 @@ var damage = GlobalCards.player1Damage
 func _ready() -> void:
 	punch_collision.disabled = true
 	SPEED = NORMAL_SPEED
+	animations = stickman_1new.animation_player
+
 func _physics_process(delta: float) -> void:
 
 	current_timestamp += delta * 1000
@@ -45,6 +50,7 @@ func _physics_process(delta: float) -> void:
 	)
 
 	if Input.is_action_just_pressed("P1Punch") and punch_timer.timeout:
+		animations.play("PunchStill")
 		current_timestamp = 0
 		punch_timer.start()
 		punch_collision.disabled = false
@@ -52,10 +58,16 @@ func _physics_process(delta: float) -> void:
 		punch_collision.disabled = true
 		#await punch_timer.timeout
 		print("FinishedPunch")
+		animations.play("Punch2ToIdle")
 
 	if Input.is_action_just_pressed("P1Jump") and is_on_floor():
+		animations.play("Jumping")
 		current_timestamp = 0
 		velocity.y = JUMP_VELOCITY
+
+	if velocity.y < 0:
+		animations.play("Falling")
+
 
 	if movement_dir:
 		velocity.x = -movement_dir * SPEED
@@ -107,13 +119,18 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_pressed("P1Left") or Input.is_action_pressed("P1Right"):
 		if Input.is_action_just_pressed("P1Punch"):
+			animations.play("PunchFromMoving")
 			set_process_input(false)
 			await get_tree().create_timer(0.4).timeout
 			print("haiudfhas")
 			set_process_input(true)
-			
+			await animations.animation_finished
+		else:
+			animations.play("WalkForwards")
+
 
 	if Input.is_action_pressed("P1Crouch"):
+		animations.play("Crouch")
 		SPEED = CROUCHING_SPEED
 		standing_collision.disabled = true
 		crouching_collision.disabled = false
@@ -128,6 +145,14 @@ func _physics_process(delta: float) -> void:
 	if health <= 0:
 		death()
 
+	if not is_on_floor() and velocity.y < 0:
+		animations.play("Falling")
+		if is_on_floor():
+			animations.play("Landing")
+
+	if animations.is_playing() == false or Input.is_anything_pressed() == false:
+		animations.play("Idle")
+
 
 func _on_hit_box_area_entered(area: Area3D) -> void:
 	print("Player1 Health = " + str(health))
@@ -138,8 +163,8 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		sounds.play()
 		health -= player2.damage
 		#FRAME PAUSE CODE!
-		frameFreeze(0.05, 0.4)
-		await get_tree().create_timer(0.1 * 0.3).timeout
+		frameFreeze(0.05, 0.2)
+		await get_tree().create_timer(0.10).timeout
 		Engine.time_scale = 1.0
 	if health == 0:
 		print("Player1 Died")

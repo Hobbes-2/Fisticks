@@ -10,7 +10,11 @@ extends CharacterBody3D
 @onready var sounds: AudioStreamPlayer = $Sounds
 
 @export var debug : bool
+#ANIMS
+@onready var stickman_1new: Node3D = $Stickman1NEW
+var animations
 
+#STAT MODS
 var SPEED
 var NORMAL_SPEED = GlobalCards.player2Speed
 var DODGE_SPEED = NORMAL_SPEED * 2
@@ -29,6 +33,7 @@ var damage = GlobalCards.player1Damage
 func _ready() -> void:
 	punch_collision.disabled = true
 	SPEED = NORMAL_SPEED
+	animations = stickman_1new.animation_player
 
 
 func _physics_process(delta: float) -> void:
@@ -49,14 +54,17 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("P2Left", "P2Right", "ui_up", "ui_down")
 	if Input.is_action_just_pressed("P2Punch") and punch_timer.timeout:
+		animations.play("PunchStill")
 		punch_timer.start()
 		punch_collision.disabled = false
 		await get_tree().create_timer(0.1).timeout
 		punch_collision.disabled = true
 		#await punch_timer.timeout
 		print("FinishedPunch")
+		animations.play("Punch2ToIdle")
 
 	if Input.is_action_just_pressed("P2Jump") and is_on_floor():
+		animations.play("Jumping")
 		velocity.y = JUMP_VELOCITY
 
 	if movement_dir:
@@ -108,9 +116,15 @@ func _physics_process(delta: float) -> void:
 		hit_collision.scale.y = standing_collision.scale.y
 		hit_collision.global_position = standing_collision.global_position
 
+	if Input.is_action_pressed("P2Left") or Input.is_action_pressed("P2Right"):
+		animations.play("WalkForwards")
+
+
 	if health <= 0:
 		death()
 
+	if animations.is_playing() == false or Input.is_anything_pressed() == false:
+		animations.play("Idle")
 
 func _on_hit_box_area_entered(area: Area3D) -> void:
 	print("Player2 Health = " + str(health))
@@ -121,8 +135,8 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		sounds.play()
 		health -= player1.damage
 		#FRAME PAUSE CODE!
-		frameFreeze(0.05, 0.4)
-		await get_tree().create_timer(0.1 * 0.3).timeout
+		frameFreeze(0.05, 0.2)
+		await get_tree().create_timer(0.1).timeout
 		Engine.time_scale = 1.0
 	if health == 0:
 		print("Player2 Died")

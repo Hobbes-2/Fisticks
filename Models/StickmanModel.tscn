@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://4k7u4s5o1dp3"]
+
+[ext_resource type="PackedScene" uid="uid://b2tt8ohjs7ntu" path="res://Models/Stickman1NEW.glb" id="1_dnlwi"]
+[ext_resource type="Script" uid="uid://ccb2hvdli1m4a" path="res://Models/stickman_model.gd" id="2_avtth"]
+
+[node name="Stickman1NEW" instance=ExtResource("1_dnlwi")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("2_avtth")
+
+[node name="Skeleton3D" parent="Tpose" index="0"]
+bones/0/rotation = Quaternion(0.007691459, -0.015539184, 0.23238052, 0.9724704)
+bones/1/rotation = Quaternion(0, 2.3283064e-10, -1.4551915e-11, 1)
+bones/3/rotation = Quaternion(-0.18462941, -0.41439646, 0.36268264, 0.8140325)
+bones/4/rotation = Quaternion(0.8990445, -0.16062938, 0.0007521192, 0.40732864)
+bones/6/rotation = Quaternion(0.16531752, 0.46269974, 0.29304338, 0.8201858)
+bones/7/rotation = Quaternion(-0.36690232, -0.3677544, 0.7746817, 0.3605658)
+bones/10/rotation = Quaternion(0.64074755, -1.5569393e-11, 1.68044e-06, 0.76775163)
+bones/11/rotation = Quaternion(4.7611977e-07, -3.2699222e-07, -0.2215769, 0.9751429)
+bones/13/rotation = Quaternion(-0.6310318, 0.11115872, 0.1331918, 0.75611025)
+bones/14/rotation = Quaternion(6.9928254e-09, 1.930932e-08, -0.3133606, 0.94963425)
+
+[node name="Head" parent="Tpose/Skeleton3D" index="0"]
+transform = Transform3D(0.8915157, -0.45220542, -0.026648104, 0.45172733, 0.8918803, -0.02218144, 0.033797484, 0.0077374247, 0.99939877, -0.45220536, 0.89188015, 0.0077374238)
+
+[node name="RightForearm" parent="Tpose/Skeleton3D" index="1"]
+transform = Transform3D(0.017998785, -0.6972444, 0.7166076, 0.86989844, 0.36425233, 0.33256114, -0.49290234, 0.6173901, 0.6130879, -0.50913846, 0.44098458, -0.68284243)
+
+[node name="RightBicep" parent="Tpose/Skeleton3D" index="2"]
+transform = Transform3D(0.12607478, -0.10031819, -0.9869354, 0.6765104, -0.71895325, 0.15949875, -0.7255611, -0.6877808, -0.022775589, -0.44543692, 0.8975144, -0.24610683)
+
+[node name="LeftForearm" parent="Tpose/Skeleton3D" index="3"]
+transform = Transform3D(-0.37727016, -0.8117437, 0.44580206, -0.8714544, 0.14825684, -0.46753305, 0.31342384, -0.56488246, -0.7633304, -0.5018477, 0.47418615, 0.7428131)
+
+[node name="LeftBicep" parent="Tpose/Skeleton3D" index="4"]
+transform = Transform3D(0.040372103, -0.067517996, 0.996901, 0.7571881, -0.64892143, -0.074614406, 0.6519481, 0.7578538, 0.02492548, -0.458974, 0.8862463, 0.2615817)
+
+[node name="Body" parent="Tpose/Skeleton3D" index="5"]
+transform = Transform3D(0.8915157, -0.45220542, -0.026648104, 0.45172733, 0.8918803, -0.02218144, 0.033797484, 0.0077374247, 0.99939877, 0, 0, 0)
+
+[node name="LeftCalf" parent="Tpose/Skeleton3D" index="6"]
+transform = Transform3D(0.90180737, 0.43213826, 1.7738811e-06, 0.43213832, -0.9018075, 1.1412897e-06, 2.0928944e-06, -2.6266127e-07, -1, 3.5849795e-13, -0.914389, 0.27939647)
+
+[node name="LeftQuad" parent="Tpose/Skeleton3D" index="7"]
+transform = Transform3D(1, 4.5474735e-13, 2.6226037e-06, -1.1368684e-12, -1.0000001, 3.5762787e-07, 2.6226041e-06, -3.5762787e-07, -1, 1.6292634e-13, -0.3301961, 0.27939665)
+
+[node name="RightCalf" parent="Tpose/Skeleton3D" index="8"]
+transform = Transform3D(0.9586064, 0.28473446, 9.21845e-09, 0.28473458, -0.9586066, -2.2559762e-07, -5.9041074e-08, 2.0282963e-07, -1.0000001, -0.19962147, -0.879225, -0.27939656)
+
+[node name="RightQuad" parent="Tpose/Skeleton3D" index="9"]
+transform = Transform3D(0.93980736, -0.34170473, -2.9802319e-08, -0.34170476, -0.93980753, -2.3841858e-07, 4.0978193e-08, 2.2351742e-07, -1.0000001, 0, -0.3301961, -0.27939665)

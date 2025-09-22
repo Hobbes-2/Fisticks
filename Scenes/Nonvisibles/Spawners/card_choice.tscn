@@ -7,12 +7,13 @@
 script = ExtResource("1_0ku4r")
 
 [node name="Card1Spawn" type="Node2D" parent="."]
-position = Vector2(-100, 0)
+position = Vector2(-112, 0)
 
 [node name="Card2Spawn" type="Node2D" parent="."]
+position = Vector2(-4, 0)
 
 [node name="Card3Spawn" type="Node2D" parent="."]
-position = Vector2(100, 0)
+position = Vector2(104, 0)
 
 [node name="Label3D" type="Label" parent="."]
 offset_left = 456.0
@@ -29,3 +30,9 @@ z_index = -1
 position = Vector2(536, 608)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_p6gvu")
+
+[node name="WhichPlayer" type="Label" parent="."]
+offset_left = 1006.0
+offset_top = 89.0
+offset_right = 1046.0
+offset_bottom = 112.0

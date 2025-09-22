@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var which_player: Label = $WhichPlayer
 @export var player1 : CharacterBody3D
 #SO MANY CARDSSDSDSDSDASS
 var card1 = preload("res://Scenes/2D Scenes/Cards/test_card.tscn")
@@ -59,3 +60,7 @@ func _physics_process(delta: float) -> void:
 			GlobalCards.card_chosen = false
 			GlobalCards.player2_choice = true
 			_ready()
+	if GlobalCards.player2_choice == true:
+		which_player.text = "Player 2s choice"
+	else:
+		which_player.text = "Player 1s choice"

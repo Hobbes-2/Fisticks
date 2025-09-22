@@ -1,17 +1,6 @@
-extends Node
+extends Node3D
 
-var card_chosen : bool = false
-
-#PLAYER VARIABLES
-var player1Health = 20
-var player1Damage = 1
-var player1Speed = 7
-
-var player2Health = 20
-var player2Damage = 1
-var player2Speed = 7
-var player2_choice : bool = false
-
+@onready var pause_menu: Node2D = $PauseMenu
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,4 +9,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("ui_cancel"):
+		pause_menu.show()
+	if pause_menu.visible == true:
+		Engine.time_scale = 0.0
