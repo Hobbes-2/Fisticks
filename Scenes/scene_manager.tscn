@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdm02vug7qht4"]
+
+[ext_resource type="Script" uid="uid://cxw3t6q7cekbv" path="res://Scripts/scene_manager.gd" id="1_mk1ro"]
+
+[node name="SceneManager" type="CanvasLayer"]
+script = ExtResource("1_mk1ro")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

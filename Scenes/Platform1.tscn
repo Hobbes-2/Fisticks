@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=3 uid="uid://de6dv58pwf3bb"]
+
+[ext_resource type="Texture2D" uid="uid://q8b7i8qyfxpy" path="res://Models/PUSHILIN_boulder.png" id="1_qje1u"]
+[ext_resource type="ArrayMesh" uid="uid://dr86oqb45g5ur" path="res://Models/PUSHILIN_boulder.obj" id="2_tjyen"]
+[ext_resource type="ArrayMesh" uid="uid://bo1fqb26rfmh4" path="res://Models/StonePlatform.obj" id="3_y6u4y"]
+[ext_resource type="Material" uid="uid://bse0vq5avx5mc" path="res://Textures/GroundText1.tres" id="4_tjyen"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ye17n"]
+size = Vector3(20.657715, 1, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vf38m"]
+albedo_texture = ExtResource("1_qje1u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jfthh"]
+albedo_texture = ExtResource("1_qje1u")
+
+[node name="Floor" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6447754, -2.10735, -2.71055)
+shape = SubResource("BoxShape3D_ye17n")
+
+[node name="PushilinBoulder" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, -6.778782, -3.2147388, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, -4.1513863, -3.2147388, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder3" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, -2.0622506, -3.2147388, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder4" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, -0.4339447, -3.2147388, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder5" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, 1.992702, -3.2147388, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder6" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, 4.3414974, -3.2147388, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder9" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, 2.7234402, -4.202231, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder10" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, 0.40138245, -4.202231, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder11" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, 4.5683937, -4.202231, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder12" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, 6.5683937, -4.202231, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder13" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, -1.4403439, -4.4648156, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder14" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, -3.7454083, -4.4648156, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder15" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, -6.1247997, -4.141679, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder16" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, 7.896332, -3.642387, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder17" type="MeshInstance3D" parent="."]
+transform = Transform3D(13.387578, 2.3412633, 0, -18.253674, 1.7171252, 0, 0, 0, 2.3932345, 4.319296, -0.61830854, -6.226266)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder21" type="MeshInstance3D" parent="."]
+transform = Transform3D(13.387578, 2.3412633, 0, -18.253674, 1.7171252, 0, 0, 0, 2.3932345, -4.2282777, 4.114656, -14.143283)
+material_override = SubResource("StandardMaterial3D_jfthh")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder22" type="MeshInstance3D" parent="."]
+transform = Transform3D(-13.811776, 1.3773957, 0, -39.54865, -0.48103502, 0, 0, 0, 2.3932345, -0.5710702, 8.057634, -14.143283)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder18" type="MeshInstance3D" parent="."]
+transform = Transform3D(10.123018, 1.5930979, 0, -13.802517, 1.1684071, 0, 0, 0, 2.3932345, -0.3494339, -0.61830854, -6.226266)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder19" type="MeshInstance3D" parent="."]
+transform = Transform3D(11.8975115, 1.9997727, 0, -16.222, 1.4666698, 0, 0, 0, 2.3932345, -5.563319, -0.61830854, -6.226266)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder20" type="MeshInstance3D" parent="."]
+transform = Transform3D(-21.692314, 1.9493814, 0, -35.705666, -1.1843106, 0, 0, 0, 2.3932343, 2.6181507, -0.61830854, -9.036345)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder7" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, 6.2394648, -3.2147388, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="PushilinBoulder8" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.695212, 0, 0, 0, 2.4799619, 0, 0, 0, 2.3932345, 8.582141, -3.2147388, -1.9174387)
+material_override = SubResource("StandardMaterial3D_vf38m")
+mesh = ExtResource("2_tjyen")
+
+[node name="StonePlatform" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 4, 0, 0, 0, 8, 0.699872, -1.7459624, -2.989438)
+mesh = ExtResource("3_y6u4y")
+surface_material_override/0 = ExtResource("4_tjyen")

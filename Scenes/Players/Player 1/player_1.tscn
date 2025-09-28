@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://2frmar6v358"]
+[gd_scene load_steps=12 format=3 uid="uid://2frmar6v358"]
 
 [ext_resource type="Script" uid="uid://dqwkni2gtfme6" path="res://Scripts/Players/player_1.gd" id="1_2mvbs"]
 [ext_resource type="Texture2D" uid="uid://dmjcvfupo1ad2" path="res://prototype_textures/textures/orange_texture.png" id="2_ifihs"]
 [ext_resource type="ArrayMesh" uid="uid://iuukx63ioh3y" path="res://Models/Stickman1.obj" id="2_tmdyv"]
 [ext_resource type="AudioStream" uid="uid://dtbnt2yaa60pi" path="res://Audio/SFX/HitSFX1.mp3" id="4_ru8ij"]
-[ext_resource type="PackedScene" uid="uid://4k7u4s5o1dp3" path="res://Models/StickmanModel.tscn" id="5_b3jtc"]
+[ext_resource type="Script" uid="uid://ccb2hvdli1m4a" path="res://Models/stickman_model.gd" id="6_ex3ms"]
+[ext_resource type="PackedScene" uid="uid://ejsp5vmwx5v6" path="res://Models/Player/Orange/stickman_orange_newest.tscn" id="6_hl6q1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmdyv"]
 size = Vector3(0.190381, 1.4, 0.2)
@@ -59,7 +60,8 @@ disabled = true
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ru8ij")
 
-[node name="Stickman1NEW" parent="." instance=ExtResource("5_b3jtc")]
-transform = Transform3D(-0.1, 0, -8.742278e-09, 0, 0.1, 0, 8.742278e-09, 0, -0.1, 0, 0, 0)
+[node name="StickmanOrangeNewest" parent="." instance=ExtResource("6_hl6q1")]
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, 0, -0.24564573, 0)
+script = ExtResource("6_ex3ms")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

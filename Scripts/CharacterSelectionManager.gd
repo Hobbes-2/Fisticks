@@ -6,8 +6,8 @@ var player2
 var player2script = preload("res://Scripts/Players/player_2.gd")
 
 var selectableCharacters = {
-	"Orange" : preload("res://stickman_1_test.tscn"),
-	"Red" : preload("res://stickman_1_test.tscn")
+	"Orange" : preload("res://Scenes/stickman_1_test.tscn"),
+	"Red" : preload("res://Scenes/stickman_1_test.tscn"),
 }
 
 # Called when the node enters the scene tree for the first time.

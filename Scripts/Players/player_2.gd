@@ -13,7 +13,11 @@ extends CharacterBody3D
 #ANIMS
 @onready var stickman_1new: Node3D = $Stickman1NEW
 var animations
-
+#SHADER STUFF
+@onready var shaders: MeshInstance3D = $"../CameraController/Camera3D2/Shaders"
+var wireShader = preload("res://Shaders/GreenCrt.tres")
+var outlineShader = preload("res://Shaders/CellShader.tres")
+var current_hitstop
 #STAT MODS
 var SPEED
 var NORMAL_SPEED = GlobalCards.player2Speed
@@ -134,15 +138,29 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 	elif area == player1.get_child(2):
 		sounds.play()
 		health -= player1.damage
+		shaders.set_surface_override_material(0, wireShader)
 		#FRAME PAUSE CODE!
-		frameFreeze(0.05, 0.2)
-		await get_tree().create_timer(0.1).timeout
-		Engine.time_scale = 1.0
+		hitStopShort()
+		#IN OTHER INSTANCES CHANGE HITSTOPLONG() TO HITSTOPSHORT OR MEDIUM
+		while await hitStopShort():
+			return
+		shaders.set_surface_override_material(0, outlineShader)
 	if health == 0:
 		print("Player2 Died")
 
-func frameFreeze(timeScale, duration):
-	Engine.time_scale = timeScale
+func hitStopShort():
+	Engine.time_scale = 0
+	await get_tree().create_timer(0.15, true, false, true).timeout
+	Engine.time_scale = 1.0
 
+func hitStopMedium():
+	Engine.time_scale = 0
+	await get_tree().create_timer(0.3, true, false, true).timeout
+	Engine.time_scale = 1.0
+
+func hitStopLong():
+	Engine.time_scale = 0
+	await get_tree().create_timer(0.45, true, false, true).timeout
+	Engine.time_scale = 1.0
 func death():
 	get_tree().change_scene_to_file("res://Scenes/Players/Player 1/p_1_win.tscn")

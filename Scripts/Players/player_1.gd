@@ -10,9 +10,13 @@ extends CharacterBody3D
 @export var low_death : Area3D
 @export var debug : bool
 @onready var sounds: AudioStreamPlayer = $Sounds
-
+#SHADER STUFF
+@onready var shaders: MeshInstance3D = $"../CameraController/Camera3D2/Shaders"
+var wireShader = preload("res://Shaders/GreenCrt.tres")
+var outlineShader = preload("res://Shaders/CellShader.tres")
+var current_hitstop
 #ANIMATIONS AND MODEL STUFF
-@onready var stickman_1new: Node3D = $Stickman1NEW
+@onready var stickman_1new: Node3D = $StickmanOrangeNewest
 var animations
 #SPEED AND SPEED MODIFIERS
 var SPEED
@@ -35,6 +39,7 @@ func _ready() -> void:
 	punch_collision.disabled = true
 	SPEED = NORMAL_SPEED
 	animations = stickman_1new.animation_player
+	shaders.set_surface_override_material(0, outlineShader)
 
 func _physics_process(delta: float) -> void:
 
@@ -50,7 +55,7 @@ func _physics_process(delta: float) -> void:
 	)
 
 	if Input.is_action_just_pressed("P1Punch") and punch_timer.timeout:
-		animations.play("PunchStill")
+		animations.play("Tpose_001|Punch")
 		current_timestamp = 0
 		punch_timer.start()
 		punch_collision.disabled = false
@@ -61,12 +66,12 @@ func _physics_process(delta: float) -> void:
 		animations.play("Punch2ToIdle")
 
 	if Input.is_action_just_pressed("P1Jump") and is_on_floor():
-		animations.play("Jumping")
+		animations.play("Tpose_001|JumpForward")
 		current_timestamp = 0
 		velocity.y = JUMP_VELOCITY
 
-	if velocity.y < 0:
-		animations.play("Falling")
+	#if velocity.y < 0:
+		#animations.play("Falling")
 
 
 	if movement_dir:
@@ -119,18 +124,18 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_pressed("P1Left") or Input.is_action_pressed("P1Right"):
 		if Input.is_action_just_pressed("P1Punch"):
-			animations.play("PunchFromMoving")
+			#animations.play("PunchFromMoving")
 			set_process_input(false)
 			await get_tree().create_timer(0.4).timeout
 			print("haiudfhas")
 			set_process_input(true)
 			await animations.animation_finished
 		else:
-			animations.play("WalkForwards")
+			animations.play("Tpose_001|Run")
 
 
 	if Input.is_action_pressed("P1Crouch"):
-		animations.play("Crouch")
+		#animations.play("Crouch")
 		SPEED = CROUCHING_SPEED
 		standing_collision.disabled = true
 		crouching_collision.disabled = false
@@ -143,15 +148,18 @@ func _physics_process(delta: float) -> void:
 		hit_collision.scale.y = standing_collision.scale.y
 		hit_collision.global_position = standing_collision.global_position
 	if health <= 0:
+		hitStopLong()
 		death()
 
-	if not is_on_floor() and velocity.y < 0:
-		animations.play("Falling")
-		if is_on_floor():
-			animations.play("Landing")
+	#if not is_on_floor() and velocity.y < 0:
+		#animations.play("Falling")
+		#if is_on_floor():
+			#animations.play("Landing")
 
 	if animations.is_playing() == false or Input.is_anything_pressed() == false:
-		animations.play("Idle")
+		animations.play("Tpose_001|Idle")
+
+	#if player_being_hit == false:
 
 
 func _on_hit_box_area_entered(area: Area3D) -> void:
@@ -162,15 +170,32 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 	elif area == player2.get_child(2):
 		sounds.play()
 		health -= player2.damage
+		animations.play("Tpose_001|TakeHit")
+		shaders.set_surface_override_material(0, wireShader)
 		#FRAME PAUSE CODE!
-		frameFreeze(0.05, 0.2)
-		await get_tree().create_timer(0.10).timeout
-		Engine.time_scale = 1.0
+		hitStopShort()
+		#IN OTHER INSTANCES CHANGE HITSTOPLONG() TO HITSTOPSHORT OR MEDIUM
+		while await hitStopShort():
+			return
+		shaders.set_surface_override_material(0, outlineShader)
 	if health == 0:
 		print("Player1 Died")
 
-func frameFreeze(timeScale, duration):
-	Engine.time_scale = timeScale
+func hitStopShort():
+	Engine.time_scale = 0
+	await get_tree().create_timer(0.15, true, false, true).timeout
+	Engine.time_scale = 1.0
+
+func hitStopMedium():
+	Engine.time_scale = 0
+	await get_tree().create_timer(0.3, true, false, true).timeout
+	Engine.time_scale = 1.0
+
+func hitStopLong():
+	Engine.time_scale = 0
+	await get_tree().create_timer(0.45, true, false, true).timeout
+	Engine.time_scale = 1.0
+
 
 func death():
 	get_tree().change_scene_to_file("res://Scenes/Players/Player 2/p_2_win.tscn")

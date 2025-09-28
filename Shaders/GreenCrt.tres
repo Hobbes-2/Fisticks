@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cowofyy5e8nno"]
+
+[ext_resource type="Shader" uid="uid://xhdctl4fds5r" path="res://Shaders/GreenCRT.gdshader" id="1_o5d5p"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_o5d5p")
+shader_parameter/depth_threshold = 0.05

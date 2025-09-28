@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://coagqx7eutnx"]
+
+[ext_resource type="Shader" uid="uid://bbbvpdn5mvhgq" path="res://Shaders/CellShader.gdshader" id="1_213c2"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_213c2")
