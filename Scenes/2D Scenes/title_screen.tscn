@@ -1,30 +1,70 @@
-[gd_scene load_steps=2 format=3 uid="uid://npoy876g3jby"]
+[gd_scene load_steps=4 format=3 uid="uid://npoy876g3jby"]
 
 [ext_resource type="Script" uid="uid://lmwexib25msh" path="res://Scripts/title_screen.gd" id="1_klylv"]
+[ext_resource type="Texture2D" uid="uid://c10gqsgwbvst7" path="res://BlendFiles/TItleScreen.png" id="2_5c286"]
+[ext_resource type="Texture2D" uid="uid://bk4ogjsqdfbb0" path="res://BlendFiles/NewButton.png" id="3_5c286"]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_klylv")
 
+[node name="TItleScreen" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.59999996, 0.6)
+texture = ExtResource("2_5c286")
+
 [node name="PlayButton" type="Button" parent="."]
-offset_left = 544.0
-offset_top = 396.0
-offset_right = 614.0
-offset_bottom = 427.0
-text = "Play"
+texture_filter = 1
+offset_left = 250.0
+offset_top = 288.0
+offset_right = 626.0
+offset_bottom = 372.0
+icon = ExtResource("3_5c286")
+flat = true
+
+[node name="Label" type="Label" parent="PlayButton"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 9.0
+offset_right = 246.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 50
+text = "PLAY"
 
 [node name="TutorialButton" type="Button" parent="."]
-offset_left = 533.0
-offset_top = 448.0
-offset_right = 636.0
-offset_bottom = 479.0
-text = "How To Play"
+texture_filter = 1
+offset_left = 335.0
+offset_top = 384.0
+offset_right = 711.0
+offset_bottom = 468.0
+icon = ExtResource("3_5c286")
+flat = true
+
+[node name="Label" type="Label" parent="TutorialButton"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 6.0
+offset_right = 309.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 50
+text = "TUTORIAL"
 
 [node name="Button3" type="Button" parent="."]
-offset_left = 542.0
-offset_top = 509.0
-offset_right = 612.0
-offset_bottom = 540.0
-text = "button3"
+texture_filter = 1
+offset_left = 250.0
+offset_top = 481.0
+offset_right = 626.0
+offset_bottom = 565.0
+icon = ExtResource("3_5c286")
+flat = true
+
+[node name="Label" type="Label" parent="Button3"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 16.0
+offset_right = 221.0
+offset_bottom = 71.0
+theme_override_font_sizes/font_size = 40
+text = "N/A"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]

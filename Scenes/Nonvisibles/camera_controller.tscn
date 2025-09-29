@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://3aj5tyl6vd5r"]
+
+[ext_resource type="Script" uid="uid://c3fbetr4xbgj5" path="res://Scripts/camera_controller.gd" id="1_61mff"]
+[ext_resource type="Texture2D" uid="uid://bkqv5mmp0ataj" path="res://images/Misc/icon.jpg" id="2_n4n8w"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_n4n8w"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43hli"]
+albedo_texture = ExtResource("2_n4n8w")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xfq55"]
+
+[node name="CameraController" type="Node3D" node_paths=PackedStringArray("player1", "player2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+script = ExtResource("1_61mff")
+player1 = NodePath("")
+player2 = NodePath("")
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+
+[node name="P1Health" type="Label3D" parent="Camera3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, -1, -2)
+
+[node name="P1Speed" type="Label3D" parent="Camera3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, -1.225, -2)
+
+[node name="P1Damage" type="Label3D" parent="Camera3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, -1.45, -2)
+
+[node name="P2Health" type="Label3D" parent="Camera3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, -1, -2)
+
+[node name="P2Speed" type="Label3D" parent="Camera3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, -1.225, -2)
+
+[node name="P2Damage" type="Label3D" parent="Camera3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, -1.45, -2)
+
+[node name="Shaders" type="MeshInstance3D" parent="Camera3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("QuadMesh_n4n8w")
+
+[node name="MidPoint2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.1, -2)
+visible = false
+material_override = SubResource("StandardMaterial3D_43hli")
+mesh = SubResource("CapsuleMesh_xfq55")

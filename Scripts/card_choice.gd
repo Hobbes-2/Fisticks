@@ -54,7 +54,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if GlobalCards.card_chosen == true:
 		if GlobalCards.player2_choice == true:
-			get_tree().change_scene_to_file("res://Scenes/main.tscn")
+			get_tree().change_scene_to_file("res://Scenes/2D Scenes/map_select.tscn")
 			GlobalCards.player2_choice = false
 		else:
 			GlobalCards.card_chosen = false

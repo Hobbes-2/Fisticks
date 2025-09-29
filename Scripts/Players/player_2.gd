@@ -164,3 +164,10 @@ func hitStopLong():
 	Engine.time_scale = 1.0
 func death():
 	get_tree().change_scene_to_file("res://Scenes/Players/Player 1/p_1_win.tscn")
+
+
+		#i.expand = true
+		#i.stretch_mode = TextureRect.STRETCH_SCALE
+		#i.set_anchors_preset(Control.PRESET_FULL_RECT)
+		#custom_minimum_size = Vector2(100, 100)
+		#i.set_size(i.texture.get_size())

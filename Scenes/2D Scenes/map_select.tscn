@@ -1,44 +1,33 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmi6hgjgwlyu1"]
 
-[ext_resource type="Texture2D" uid="uid://cfu7an1plyutm" path="res://images/Misc/p1_select.png" id="1_tchjg"]
-[ext_resource type="Script" uid="uid://b8p5w4yfocu7t" path="res://Scripts/map_select_cursor.gd" id="2_bltpo"]
+[ext_resource type="PackedScene" uid="uid://cgpdxal81nqrp" path="res://Scenes/2D Scenes/carasoul_menu.tscn" id="1_scaxw"]
 [ext_resource type="Texture2D" uid="uid://28it22qxj50c" path="res://images/Misc/icon.svg" id="3_2jtby"]
+[ext_resource type="Texture2D" uid="uid://vj7you61erik" path="res://Sprites/Screenshot 2025-09-28 233356.png" id="3_tchjg"]
 
 [node name="MapSelect" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="MapSelectCursor" type="Sprite2D" parent="."]
-z_index = 1
-position = Vector2(-512, -256)
-scale = Vector2(4, 4)
-texture = ExtResource("1_tchjg")
-script = ExtResource("2_bltpo")
-portraitOffset = Vector2(128, 128)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 320)
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="CarasoulMenu" parent="." node_paths=PackedStringArray("position_offset_node") instance=ExtResource("1_scaxw")]
 layout_mode = 0
-offset_left = -576.0
-offset_top = -320.0
-offset_right = 574.0
-offset_bottom = 330.0
-columns = 2
+offset_left = 520.0
+offset_top = 280.0
+offset_right = 520.0
+offset_bottom = 280.0
+position_offset_node = NodePath(".")
+Maps = true
 
-[node name="Map1" type="TextureRect" parent="GridContainer" groups=["Maps"]]
-layout_mode = 2
+[node name="Map1" type="TextureRect" parent="CarasoulMenu" groups=["Maps"]]
+layout_mode = 0
 texture = ExtResource("3_2jtby")
 stretch_mode = 2
 
-[node name="Map2" type="TextureRect" parent="GridContainer" groups=["Maps"]]
-layout_mode = 2
-texture = ExtResource("3_2jtby")
-
-[node name="Map3" type="TextureRect" parent="GridContainer" groups=["Maps"]]
-layout_mode = 2
-texture = ExtResource("3_2jtby")
-
-[node name="Map4" type="TextureRect" parent="GridContainer" groups=["Maps"]]
-layout_mode = 2
-texture = ExtResource("3_2jtby")
-
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Map3" type="TextureRect" parent="CarasoulMenu" groups=["Maps"]]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 123.0
+texture = ExtResource("3_tchjg")
+stretch_mode = 2

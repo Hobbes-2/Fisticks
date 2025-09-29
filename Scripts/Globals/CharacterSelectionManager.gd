@@ -10,7 +10,13 @@ var selectableCharacters = {
 	"Red" : preload("res://Scenes/stickman_1_test.tscn"),
 }
 
-# Called when the node enters the scene tree for the first time.
+var selectableMaps = {
+	"Spikes" : "res://Scenes/main.tscn",
+	"Forest" : "res://Scenes/Maps/map_1.tscn"
+}
+
+var current_map
+
 func _ready() -> void:
 	pass # Replace with function body.
 

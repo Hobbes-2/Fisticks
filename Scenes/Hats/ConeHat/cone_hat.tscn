@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfsj54qljripd"]
+
+[ext_resource type="ArrayMesh" uid="uid://cmbax1htial1y" path="res://Models/Hats/Cone.obj" id="1_uwim0"]
+
+[node name="ConeHat" type="Node3D"]
+
+[node name="Cone" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = ExtResource("1_uwim0")

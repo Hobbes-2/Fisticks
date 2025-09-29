@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://j6p0omuydtgx"]
+[gd_scene load_steps=4 format=3 uid="uid://j6p0omuydtgx"]
 
 [ext_resource type="Script" uid="uid://coqmbbgapjjpa" path="res://Scripts/card_choice.gd" id="1_0ku4r"]
 [ext_resource type="Texture2D" uid="uid://cwii1xk8fkew0" path="res://images/SlotsBase1.png" id="2_p6gvu"]
+[ext_resource type="Script" uid="uid://b178fudff2818" path="res://Scenes/Nonvisibles/Spawners/card_define.gd" id="3_tn68i"]
 
 [node name="CardChoice" type="Node2D"]
 script = ExtResource("1_0ku4r")
@@ -36,3 +37,28 @@ offset_left = 1006.0
 offset_top = 89.0
 offset_right = 1046.0
 offset_bottom = 112.0
+
+[node name="CardDefine" type="TextureRect" parent="."]
+offset_left = 213.0
+offset_top = 166.0
+offset_right = 426.0
+offset_bottom = 474.0
+script = ExtResource("3_tn68i")
+text = "This is a card. I think"
+
+[node name="PanelContainer" type="PanelContainer" parent="CardDefine"]
+layout_mode = 0
+offset_left = -171.0
+offset_top = -11.0
+offset_right = -135.0
+offset_bottom = 12.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CardDefine/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CardDefine/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[connection signal="mouse_entered" from="CardDefine" to="CardDefine" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CardDefine" to="CardDefine" method="_on_mouse_exited"]

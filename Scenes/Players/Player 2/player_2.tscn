@@ -64,4 +64,7 @@ stream = ExtResource("4_jnrlm")
 [node name="Stickman1NEW" parent="." instance=ExtResource("5_o8sio")]
 transform = Transform3D(-0.1, 0, -8.742278e-09, 0, 0.1, 0, 8.742278e-09, 0, -0.1, 0, 0, 0)
 
+[node name="HatAdd" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0635996, -0.019040525)
+
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

@@ -11,14 +11,16 @@ config_version=5
 [application]
 
 config/name="Fisticks"
-run/main_scene="uid://npoy876g3jby"
+run/main_scene="uid://c76mc1p56ran1"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://images/Misc/icon.svg"
 
 [autoload]
 
-CharacterSelectionManager="*res://Scripts/CharacterSelectionManager.gd"
 GlobalCards="*res://Scripts/GlobalCards.gd"
+CharacterSelectionManager="*res://Scripts/Globals/CharacterSelectionManager.gd"
+CosmeticManager="*res://Scripts/Globals/CosmeticManager.gd"
 
 [editor_plugins]
 

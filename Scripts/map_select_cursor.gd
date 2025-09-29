@@ -58,9 +58,5 @@ func _process(delta: float) -> void:
 		else:
 			position.x -= portraitOffset.x
 
-	#if Input.is_action_just_pressed("ui_accept"):
-		#if CharacterSelectionManager.player1 == null:
-			#CharacterSelectionManager.player1 = CharacterSelectionManager.selectableCharacters[characters[currentSelected].name]
-		#else:
-			#CharacterSelectionManager.player2 = CharacterSelectionManager.selectableCharacters[characters[currentSelected].name]
-			#get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	if Input.is_action_just_pressed("ui_accept"):
+		CharacterSelectionManager.current_map = CharacterSelectionManager.selectableMaps[maps[currentSelected].name]

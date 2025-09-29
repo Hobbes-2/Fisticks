@@ -3,7 +3,7 @@ extends Node3D
 @export var player1 : CharacterBody3D
 @export var player2 : CharacterBody3D
 @onready var camera : Camera3D = $Camera3D2
-@onready var mid_point_mesh: MeshInstance3D = $"../MidPoint"
+@onready var mid_point_mesh: MeshInstance3D = $MidPoint2
 
 @export var debug : bool
 #UI STUFF

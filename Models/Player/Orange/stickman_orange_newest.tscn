@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ejsp5vmwx5v6"]
+[gd_scene load_steps=3 format=3 uid="uid://ejsp5vmwx5v6"]
 
 [ext_resource type="PackedScene" uid="uid://cbrkt6wur6nsk" path="res://Models/Player/Orange/StickmanOrangeNewest.fbx" id="1_8x7by"]
+[ext_resource type="Script" uid="uid://dp6yo4v0y8dfi" path="res://Models/Player/Orange/stickman_orange_newest.gd" id="2_qf7vr"]
 
 [node name="StickmanOrangeNewest" instance=ExtResource("1_8x7by")]
 transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, 0, 0, 0)
+script = ExtResource("2_qf7vr")
 
 [node name="Tpose_001" parent="." index="2"]
 transform = Transform3D(362.9583, -138.35887, 64.20363, -66.34449, 6.017436, 388.02856, -137.34518, -368.54388, -17.767775, 0.058792774, 6.693626, -0.11019741)
@@ -70,3 +72,6 @@ bone_idx = 21
 [node name="Cube_019" parent="Tpose_001/Skeleton3D" index="10"]
 transform = Transform3D(0.8840096, 0.46172768, 0.07303647, -0.15061434, 0.13341588, 0.97954834, 0.44254038, -0.87693065, 0.18748379, 0.00068578974, 0.0041689966, -0.008938191)
 bone_idx = 22
+
+[node name="HatAdd" type="Node3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11670352, 13.0636015, 0.16539949)

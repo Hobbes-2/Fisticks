@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8vks48bbesji"]
+
+[ext_resource type="PackedScene" uid="uid://ff8ablnrvigt" path="res://Models/Hats/Top hat/Top hat.glb" id="1_u51yt"]
+
+[node name="TopHat" type="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Top hat" parent="." instance=ExtResource("1_u51yt")]

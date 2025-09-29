@@ -34,8 +34,8 @@ var current_timestamp = 0
 #DAMAGE MODIFIERS
 var damage = GlobalCards.player1Damage
 
-#Time.get_time_msec() or something
 func _ready() -> void:
+	stickman_1new.get_child(4).add_child(CosmeticManager.p1hat.instantiate())
 	punch_collision.disabled = true
 	SPEED = NORMAL_SPEED
 	animations = stickman_1new.animation_player
@@ -69,10 +69,6 @@ func _physics_process(delta: float) -> void:
 		animations.play("Tpose_001|JumpForward")
 		current_timestamp = 0
 		velocity.y = JUMP_VELOCITY
-
-	#if velocity.y < 0:
-		#animations.play("Falling")
-
 
 	if movement_dir:
 		velocity.x = -movement_dir * SPEED
@@ -151,15 +147,8 @@ func _physics_process(delta: float) -> void:
 		hitStopLong()
 		death()
 
-	#if not is_on_floor() and velocity.y < 0:
-		#animations.play("Falling")
-		#if is_on_floor():
-			#animations.play("Landing")
-
 	if animations.is_playing() == false or Input.is_anything_pressed() == false:
 		animations.play("Tpose_001|Idle")
-
-	#if player_being_hit == false:
 
 
 func _on_hit_box_area_entered(area: Area3D) -> void:

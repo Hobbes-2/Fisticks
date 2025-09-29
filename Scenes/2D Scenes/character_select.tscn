@@ -1,46 +1,159 @@
-[gd_scene load_steps=4 format=3 uid="uid://futp2yl0qwsq"]
+[gd_scene load_steps=6 format=3 uid="uid://futp2yl0qwsq"]
 
 [ext_resource type="Texture2D" uid="uid://cfu7an1plyutm" path="res://images/Misc/p1_select.png" id="1_i4d8v"]
-[ext_resource type="Script" uid="uid://sopucq2qdl2p" path="res://Scripts/curson_p_1.gd" id="2_iyryb"]
+[ext_resource type="Script" uid="uid://bow21fah4ocw5" path="res://Scenes/2D Scenes/CosmeticSel.gd" id="1_iyryb"]
+[ext_resource type="PackedScene" uid="uid://ejsp5vmwx5v6" path="res://Models/Player/Orange/stickman_orange_newest.tscn" id="4_i4d8v"]
+[ext_resource type="PackedScene" uid="uid://cgpdxal81nqrp" path="res://Scenes/2D Scenes/carasoul_menu.tscn" id="4_iyryb"]
 [ext_resource type="Texture2D" uid="uid://28it22qxj50c" path="res://images/Misc/icon.svg" id="4_o6d7f"]
 
-[node name="CharacterSelect" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="CharacterSelect" type="Node3D"]
+script = ExtResource("1_iyryb")
 
-[node name="CursonP1" type="Sprite2D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="Camera2D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+current = true
+
+[node name="P1Model" parent="." instance=ExtResource("4_i4d8v")]
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -1.8999999, 0, 8.305163e-08)
+
+[node name="P2Model" parent="." instance=ExtResource("4_i4d8v")]
+transform = Transform3D(-4.371139e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.371139e-09, 1.9000002, 0, -7.4309376e-08)
+
+[node name="CarasoulMenu" parent="." node_paths=PackedStringArray("position_offset_node") instance=ExtResource("4_iyryb")]
+offset_left = 544.0
+offset_top = 152.0
+offset_right = 544.0
+offset_bottom = 152.0
+wraparound_enabled = true
+selected_index = 1
+follow_button_focus = true
+position_offset_node = NodePath(".")
+Cosmetics = true
+
+[node name="Conehead" type="TextureRect" parent="CarasoulMenu" groups=["Characters"]]
 z_index = 1
-position = Vector2(-512, -256)
-scale = Vector2(4, 4)
-texture = ExtResource("1_i4d8v")
-script = ExtResource("2_iyryb")
-player1Text = ExtResource("1_i4d8v")
-player2Text = ExtResource("1_i4d8v")
-portraitOffset = Vector2(128, 128)
-
-[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = -576.0
-offset_top = -320.0
-offset_right = 574.0
-offset_bottom = 330.0
-columns = 2
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(64, 64)
+focus_mode = 2
+mouse_filter = 0
+texture = ExtResource("1_i4d8v")
 
-[node name="Orange" type="TextureRect" parent="GridContainer" groups=["Characters"]]
-layout_mode = 2
+[node name="Red" type="TextureRect" parent="CarasoulMenu" groups=["Characters"]]
+modulate = Color(1, 1, 1, 0.65)
+z_index = -1
+layout_mode = 0
+offset_left = 195.80756
+offset_top = -139.0
+offset_right = 323.80768
+offset_bottom = -11.0
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(64.00006, 64)
+mouse_filter = 2
+texture = ExtResource("4_o6d7f")
+
+[node name="Green" type="TextureRect" parent="CarasoulMenu" groups=["Characters"]]
+modulate = Color(1, 1, 1, 0.3)
+z_index = -2
+layout_mode = 0
+offset_left = -64.00006
+offset_top = -164.0
+offset_right = 64.00006
+offset_bottom = -36.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(64.00006, 64)
+mouse_filter = 2
+texture = ExtResource("4_o6d7f")
+
+[node name="Blue" type="TextureRect" parent="CarasoulMenu" groups=["Characters"]]
+modulate = Color(1, 1, 1, 0.1)
+z_index = -3
+layout_mode = 0
+offset_left = -64.00014
+offset_top = -164.0
+offset_right = 64.00014
+offset_bottom = -36.0
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(64.00014, 64)
+mouse_filter = 2
+texture = ExtResource("4_o6d7f")
+
+[node name="CarasoulMenu2" parent="." node_paths=PackedStringArray("position_offset_node") instance=ExtResource("4_iyryb")]
+offset_left = 544.0
+offset_top = 520.0
+offset_right = 544.0
+offset_bottom = 520.0
+wraparound_enabled = true
+selected_index = 1
+follow_button_focus = true
+position_offset_node = NodePath(".")
+Player1 = false
+
+[node name="Orange" type="TextureRect" parent="CarasoulMenu2" groups=["Characters"]]
+z_index = 1
+layout_mode = 0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(64, 64)
+focus_mode = 2
+mouse_filter = 0
 texture = ExtResource("4_o6d7f")
 stretch_mode = 2
 
-[node name="Red" type="TextureRect" parent="GridContainer" groups=["Characters"]]
-layout_mode = 2
+[node name="Red" type="TextureRect" parent="CarasoulMenu2" groups=["Characters"]]
+modulate = Color(1, 1, 1, 0.65)
+z_index = -1
+layout_mode = 0
+offset_left = 195.8075
+offset_top = -139.0
+offset_right = 323.80774
+offset_bottom = -11.0
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(64.00012, 64)
+mouse_filter = 2
 texture = ExtResource("4_o6d7f")
 
-[node name="Green" type="TextureRect" parent="GridContainer" groups=["Characters"]]
-layout_mode = 2
+[node name="Green" type="TextureRect" parent="CarasoulMenu2" groups=["Characters"]]
+modulate = Color(1, 1, 1, 0.3)
+z_index = -2
+layout_mode = 0
+offset_left = -64.000046
+offset_top = -164.0
+offset_right = 64.000046
+offset_bottom = -36.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(64.000046, 64)
+mouse_filter = 2
 texture = ExtResource("4_o6d7f")
 
-[node name="Blue" type="TextureRect" parent="GridContainer" groups=["Characters"]]
-layout_mode = 2
+[node name="Blue" type="TextureRect" parent="CarasoulMenu2" groups=["Characters"]]
+modulate = Color(1, 1, 1, 0.1)
+z_index = -3
+layout_mode = 0
+offset_left = -64.00014
+offset_top = -164.0
+offset_right = 64.00014
+offset_bottom = -36.0
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(64.00014, 64)
+mouse_filter = 2
 texture = ExtResource("4_o6d7f")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Next" type="Button" parent="."]
+offset_left = 520.0
+offset_top = 280.0
+offset_right = 565.0
+offset_bottom = 311.0
+text = "Next"
+
+[connection signal="pressed" from="Next" to="." method="_on_next_pressed"]
