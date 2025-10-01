@@ -1,56 +1,65 @@
-[gd_scene load_steps=3 format=3 uid="uid://ejsp5vmwx5v6"]
+[gd_scene load_steps=5 format=3 uid="uid://ejsp5vmwx5v6"]
 
 [ext_resource type="PackedScene" uid="uid://cbrkt6wur6nsk" path="res://Models/Player/Orange/StickmanOrangeNewest.fbx" id="1_8x7by"]
 [ext_resource type="Script" uid="uid://dp6yo4v0y8dfi" path="res://Models/Player/Orange/stickman_orange_newest.gd" id="2_qf7vr"]
+[ext_resource type="Shader" uid="uid://cpvcemh7bv8lh" path="res://Shaders/ACTUALCellShading.gdshader" id="3_bjhlr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ruyao"]
+render_priority = 0
+shader = ExtResource("3_bjhlr")
+shader_parameter/albedo = Color(0, 0, 0, 1)
 
 [node name="StickmanOrangeNewest" instance=ExtResource("1_8x7by")]
 transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, 0, 0, 0)
 script = ExtResource("2_qf7vr")
 
 [node name="Tpose_001" parent="." index="2"]
-transform = Transform3D(362.9583, -138.35887, 64.20363, -66.34449, 6.017436, 388.02856, -137.34518, -368.54388, -17.767775, 0.058792774, 6.693626, -0.11019741)
+transform = Transform3D(354.273, -168.61925, 32.591423, -28.551231, 15.848019, 392.34888, -169.35019, -355.4158, 2.0325825, 0.019067083, 6.2539754, -0.547517)
 
 [node name="Skeleton3D" parent="Tpose_001" index="0"]
-bones/0/rotation = Quaternion(0.71101457, 0.00054600905, 0.037911437, 0.70215434)
-bones/1/rotation = Quaternion(0.012367876, 0.15583414, 0.17161481, 0.9726824)
+bones/0/rotation = Quaternion(0.7171217, 0.0020791448, 0.03782013, 0.69591796)
+bones/1/rotation = Quaternion(0.0066025555, 0.15935254, 0.13407898, 0.9780522)
 bones/2/rotation = Quaternion(0.050624616, 0.09863779, 0.1391521, 0.98404497)
-bones/4/rotation = Quaternion(-0.77376276, -0.033429928, 0.15004316, 0.61454105)
-bones/5/rotation = Quaternion(-0.29456556, 0.1828647, 0.58382857, 0.7341225)
-bones/6/rotation = Quaternion(0.035485327, 0.04120755, 0.73932743, 0.67114663)
+bones/4/rotation = Quaternion(-0.7572592, -0.018396389, 0.16836654, 0.63077164)
+bones/5/rotation = Quaternion(-0.3132141, 0.2835017, 0.5443735, 0.72469383)
+bones/6/rotation = Quaternion(0.034930345, 0.041679036, 0.7482482, 0.6611864)
 bones/7/rotation = Quaternion(0.011765028, 0.19597352, 0.054737493, 0.9790096)
-bones/9/rotation = Quaternion(0.73082876, 0.13242958, 0.029468419, 0.66894203)
-bones/10/rotation = Quaternion(0.19831938, -0.21476492, -0.03630673, 0.95562935)
-bones/11/rotation = Quaternion(-0.039691187, -0.039293054, 0.6804156, 0.7306951)
+bones/9/rotation = Quaternion(0.7289162, 0.13458002, 0.014142955, 0.6710956)
+bones/10/rotation = Quaternion(0.22352037, -0.23243697, 0.016084587, 0.94644237)
+bones/11/rotation = Quaternion(-0.037795566, -0.0411197, 0.7140909, 0.69782156)
 bones/12/rotation = Quaternion(-0.031540364, 0.23626901, 0.054616246, 0.96963876)
-bones/16/rotation = Quaternion(0.4800644, -0.18107264, -0.08015656, 0.85459113)
-bones/17/rotation = Quaternion(0.031387962, 0.070870504, -0.28745803, 0.95465183)
+bones/16/rotation = Quaternion(0.4575845, -0.2375867, 0.14295395, 0.84482735)
+bones/17/rotation = Quaternion(0.051478196, 0.0808567, -0.48459148, 0.869473)
 bones/18/rotation = Quaternion(0.04121595, 0.2912358, -0.27584645, 0.9150911)
-bones/21/rotation = Quaternion(-0.5362492, 0.049276147, -0.101762794, 0.8364526)
-bones/22/rotation = Quaternion(-0.016972946, -0.067824036, -0.1840719, 0.9804231)
+bones/21/rotation = Quaternion(-0.5733844, 0.074522644, -0.004639585, 0.8158771)
+bones/22/rotation = Quaternion(-0.018696921, -0.03869416, -0.25847936, 0.9650605)
 bones/23/rotation = Quaternion(-0.3604763, -0.060300253, 0.15933812, 0.9170781)
 
 [node name="Cube_011" parent="Tpose_001/Skeleton3D" index="0"]
-transform = Transform3D(0.99712485, -0.05246292, 0.054677933, 0.0540158, -0.0139580965, -0.99844253, 0.053144403, 0.9985254, -0.01108408, 6.162976e-34, 2.646978e-25, 2.220446e-18)
+transform = Transform3D(0.99713063, -0.04965742, 0.057137102, 0.055621415, -0.031387806, -0.9979585, 0.051349446, 0.9982731, -0.028535843, 6.162976e-34, 2.646978e-25, 2.220446e-18)
 bone_idx = 0
 
+[node name="Cube_011" parent="Tpose_001/Skeleton3D/Cube_011" index="0"]
+material_overlay = SubResource("ShaderMaterial_ruyao")
+
 [node name="Mball_001" parent="Tpose_001/Skeleton3D" index="1"]
-transform = Transform3D(0.85590106, -0.3741665, 0.35697713, 0.34194052, -0.10838294, -0.9334503, 0.38795605, 0.92100626, 0.03517766, -0.00052462926, -0.00013958097, 0.009985253)
+transform = Transform3D(0.8798013, -0.3041098, 0.36533087, 0.35180545, -0.10026079, -0.93068814, 0.31965986, 0.9473463, 0.018777806, -0.0004965742, -0.00031387806, 0.00998273)
 bone_idx = 1
 
 [node name="Cube_012" parent="Tpose_001/Skeleton3D" index="2"]
-transform = Transform3D(0.30790037, -0.8466963, -0.43393847, 0.6714033, -0.12979013, 0.729638, -0.67410284, -0.5160037, 0.52851224, -0.0009618321, 0.0022880458, 0.009379509)
+transform = Transform3D(0.33599457, -0.88412595, -0.3246979, 0.5757243, -0.08004701, 0.8137158, -0.7454185, -0.46034068, 0.4821178, -0.001077819, 0.0021135006, 0.009512165)
 bone_idx = 5
 
 [node name="Cube_013" parent="Tpose_001/Skeleton3D" index="3"]
-transform = Transform3D(-0.8712444, -0.27071503, -0.40944654, -0.19611788, -0.57269657, 0.7959622, -0.4499677, 0.7737776, 0.44586653, -0.006338289, 0.0014638889, 0.0061029242)
+transform = Transform3D(-0.91786444, -0.25869402, -0.30100212, -0.1526929, -0.46986073, 0.8694338, -0.3663465, 0.8439834, 0.39176798, -0.0066919513, 0.0016052086, 0.006589036)
 bone_idx = 6
 
 [node name="Cube_014" parent="Tpose_001/Skeleton3D" index="4"]
-transform = Transform3D(0.92383516, 0.2837443, -0.25693876, 0.3669296, -0.84763426, 0.38324738, -0.109045774, -0.44833577, -0.8871888, 1.1957542e-05, -0.0026153692, 0.009800884)
+transform = Transform3D(0.9301563, 0.18702278, -0.31596103, 0.3180313, -0.8404298, 0.43878627, -0.18348004, -0.5086256, -0.8412105, 0.00010273565, -0.0027733585, 0.009774819)
 bone_idx = 10
 
 [node name="Cube_015" parent="Tpose_001/Skeleton3D" index="5"]
-transform = Transform3D(0.34772608, -0.8669713, -0.35699755, -0.8181395, -0.46654862, 0.33612505, -0.4579674, 0.17519434, -0.8715347, 0.0018137123, -0.007997783, 0.0069539854)
+transform = Transform3D(0.16428345, -0.8931426, -0.4186968, -0.8460909, -0.34579557, 0.40565398, -0.5070907, 0.28761336, -0.81248856, 0.001290316, -0.008110024, 0.0065450845)
 bone_idx = 11
 
 [node name="Cube_016" parent="Tpose_001/Skeleton3D" index="6"]
@@ -58,19 +67,19 @@ transform = Transform3D(1, -4.9303804e-32, -2.2819359e-32, 2.2819352e-32, -1.192
 bone_idx = 14
 
 [node name="Cube_017" parent="Tpose_001/Skeleton3D" index="7"]
-transform = Transform3D(0.9215755, -0.036849257, -0.3864461, 0.34743622, -0.36576766, 0.8634245, -0.17316602, -0.9299761, -0.32427981, 8.8661234e-10, -0.0027939666, -0.0033019579)
+transform = Transform3D(0.8462343, -0.4589733, -0.2706119, 0.07149232, -0.40549013, 0.9112992, -0.5279925, -0.79051936, -0.3103266, 8.8661234e-10, -0.0027939666, -0.0033019579)
 bone_idx = 16
 
 [node name="Cube" parent="Tpose_001/Skeleton3D" index="8"]
-transform = Transform3D(0.8393401, 0.47180116, -0.27002174, 0.35323602, -0.09579997, 0.93061614, 0.41319776, -0.87648463, -0.24706602, -0.00021526977, -0.004930755, -0.008734813)
+transform = Transform3D(0.8722256, 0.4761496, -0.111820534, 0.20170282, -0.14189562, 0.9691136, 0.44557622, -0.8678402, -0.21980572, -0.0026812886, -0.0051628114, -0.007920116)
 bone_idx = 17
 
 [node name="Cube_018" parent="Tpose_001/Skeleton3D" index="9"]
-transform = Transform3D(0.9744323, 0.117390916, 0.19157475, -0.21471232, 0.23537257, 0.94789124, 0.06618237, -0.9647895, 0.25456, -1.5570046e-22, 0.0027939659, -0.003301958)
+transform = Transform3D(0.9888496, -0.07788956, 0.12692313, -0.11233135, 0.16940235, 0.9791241, -0.097764626, -0.98246425, 0.15876402, -1.5570046e-22, 0.0027939659, -0.003301958)
 bone_idx = 21
 
 [node name="Cube_019" parent="Tpose_001/Skeleton3D" index="10"]
-transform = Transform3D(0.8840096, 0.46172768, 0.07303647, -0.15061434, 0.13341588, 0.97954834, 0.44254038, -0.87693065, 0.18748379, 0.00068578974, 0.0041689966, -0.008938191)
+transform = Transform3D(0.9032073, 0.42529556, 0.057791576, -0.098664954, 0.074695334, 0.99231315, 0.41770974, -0.90196687, 0.10942714, -0.0004550254, 0.0037836027, -0.009041447)
 bone_idx = 22
 
 [node name="HatAdd" type="Node3D" parent="." index="4"]
