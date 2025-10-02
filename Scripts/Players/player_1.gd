@@ -189,6 +189,7 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		self.percentage += damage
 		health -= player2.damage
 		self.kb = knockbackVal
+		angle = rotation_degrees.y
 		apply_knockback(knockbackVal, angle)
 		animations.play("Tpose_001|TakeHit")
 		shaders.set_surface_override_material(0, wireShader)

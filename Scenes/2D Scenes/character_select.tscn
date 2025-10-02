@@ -29,7 +29,6 @@ offset_left = 544.0
 offset_top = 152.0
 offset_right = 544.0
 offset_bottom = 152.0
-wraparound_enabled = true
 selected_index = 1
 follow_button_focus = true
 position_offset_node = NodePath(".")
@@ -91,11 +90,11 @@ offset_left = 544.0
 offset_top = 520.0
 offset_right = 544.0
 offset_bottom = 520.0
-wraparound_enabled = true
 selected_index = 1
 follow_button_focus = true
 position_offset_node = NodePath(".")
 Player1 = false
+Cosmetics = true
 
 [node name="Orange" type="TextureRect" parent="CarasoulMenu2" groups=["Characters"]]
 z_index = 1

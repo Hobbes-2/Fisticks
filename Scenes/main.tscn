@@ -39,9 +39,8 @@ player2 = NodePath("../Player2")
 low_death = NodePath("../LowDeath")
 debug = true
 
-[node name="Player2" parent="." node_paths=PackedStringArray("player1", "low_death") instance=ExtResource("2_8gbba")]
+[node name="Player2" parent="." node_paths=PackedStringArray("low_death") instance=ExtResource("2_8gbba")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, -2)
-player1 = NodePath("../Player1")
 low_death = NodePath("../LowDeath")
 
 [node name="Platform" parent="." node_paths=PackedStringArray("player1", "player2") instance=ExtResource("6_21xkr")]
