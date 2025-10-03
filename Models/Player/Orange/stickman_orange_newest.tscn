@@ -1,13 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ejsp5vmwx5v6"]
+[gd_scene load_steps=3 format=3 uid="uid://ejsp5vmwx5v6"]
 
 [ext_resource type="PackedScene" uid="uid://cbrkt6wur6nsk" path="res://Models/Player/Orange/StickmanOrangeNewest.fbx" id="1_8x7by"]
 [ext_resource type="Script" uid="uid://dp6yo4v0y8dfi" path="res://Models/Player/Orange/stickman_orange_newest.gd" id="2_qf7vr"]
-[ext_resource type="Shader" uid="uid://cpvcemh7bv8lh" path="res://Shaders/ACTUALCellShading.gdshader" id="3_bjhlr"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ruyao"]
-render_priority = 0
-shader = ExtResource("3_bjhlr")
-shader_parameter/albedo = Color(0, 0, 0, 1)
 
 [node name="StickmanOrangeNewest" instance=ExtResource("1_8x7by")]
 transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, 0, 0, 0)
@@ -38,9 +32,6 @@ bones/23/rotation = Quaternion(-0.3604763, -0.060300253, 0.15933812, 0.9170781)
 [node name="Cube_011" parent="Tpose_001/Skeleton3D" index="0"]
 transform = Transform3D(0.99713063, -0.04965742, 0.057137102, 0.055621415, -0.031387806, -0.9979585, 0.051349446, 0.9982731, -0.028535843, 6.162976e-34, 2.646978e-25, 2.220446e-18)
 bone_idx = 0
-
-[node name="Cube_011" parent="Tpose_001/Skeleton3D/Cube_011" index="0"]
-material_overlay = SubResource("ShaderMaterial_ruyao")
 
 [node name="Mball_001" parent="Tpose_001/Skeleton3D" index="1"]
 transform = Transform3D(0.8798013, -0.3041098, 0.36533087, 0.35180545, -0.10026079, -0.93068814, 0.31965986, 0.9473463, 0.018777806, -0.0004965742, -0.00031387806, 0.00998273)

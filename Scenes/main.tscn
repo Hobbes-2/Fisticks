@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ce5sr0vvubeyj"]
+[gd_scene load_steps=14 format=3 uid="uid://ce5sr0vvubeyj"]
 
 [ext_resource type="Script" uid="uid://htvruxvhm1mf" path="res://Scripts/main.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://bvcl0ijif4ctd" path="res://Scenes/Players/Player 2/player_2.tscn" id="2_8gbba"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dgt52bh7hiyyj" path="res://Scenes/Nonvisibles/low_death.tscn" id="8_344ge"]
 [ext_resource type="PackedScene" uid="uid://3aj5tyl6vd5r" path="res://Scenes/Nonvisibles/camera_controller.tscn" id="9_hptm8"]
 [ext_resource type="AudioStream" uid="uid://bftmucysq4g5s" path="res://Audio/Music/game-background-359782.mp3" id="9_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://c6dawh1s0ad5a" path="res://Scenes/2D Scenes/health_bars.tscn" id="10_hptm8"]
 [ext_resource type="PackedScene" uid="uid://co4tqkh07vvew" path="res://Scenes/2D Scenes/pause_menu.tscn" id="11_6iyac"]
 [ext_resource type="PackedScene" uid="uid://de6dv58pwf3bb" path="res://Scenes/Platform1.tscn" id="11_d1ilt"]
 
@@ -37,10 +38,10 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
 player2 = NodePath("../Player2")
 low_death = NodePath("../LowDeath")
-debug = true
 
-[node name="Player2" parent="." node_paths=PackedStringArray("low_death") instance=ExtResource("2_8gbba")]
+[node name="Player2" parent="." node_paths=PackedStringArray("player1", "low_death") instance=ExtResource("2_8gbba")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, -2)
+player1 = NodePath("../Player1")
 low_death = NodePath("../LowDeath")
 
 [node name="Platform" parent="." node_paths=PackedStringArray("player1", "player2") instance=ExtResource("6_21xkr")]
@@ -76,3 +77,7 @@ render_target_update_mode = 4
 [node name="CameraController" parent="." node_paths=PackedStringArray("player1", "player2") instance=ExtResource("9_hptm8")]
 player1 = NodePath("../Player1")
 player2 = NodePath("../Player2")
+
+[node name="HealthBars" parent="CameraController" node_paths=PackedStringArray("player1", "player2") instance=ExtResource("10_hptm8")]
+player1 = NodePath("../../Player1")
+player2 = NodePath("../../Player2")

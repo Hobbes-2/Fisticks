@@ -1,20 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://j6p0omuydtgx"]
+[gd_scene load_steps=6 format=3 uid="uid://j6p0omuydtgx"]
 
 [ext_resource type="Script" uid="uid://coqmbbgapjjpa" path="res://Scripts/card_choice.gd" id="1_0ku4r"]
 [ext_resource type="Texture2D" uid="uid://cwii1xk8fkew0" path="res://images/SlotsBase1.png" id="2_p6gvu"]
 [ext_resource type="Script" uid="uid://b178fudff2818" path="res://Scenes/Nonvisibles/Spawners/card_define.gd" id="3_tn68i"]
+[ext_resource type="Shader" uid="uid://d0cnkty4mb20c" path="res://Shaders/BGShader.gdshader" id="4_vh874"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_abm7k"]
+shader = ExtResource("4_vh874")
+shader_parameter/iTime = 100000.0
 
 [node name="CardChoice" type="Node2D"]
 script = ExtResource("1_0ku4r")
 
-[node name="Card1Spawn" type="Node2D" parent="."]
-position = Vector2(-112, 0)
-
-[node name="Card2Spawn" type="Node2D" parent="."]
-position = Vector2(-4, 0)
-
-[node name="Card3Spawn" type="Node2D" parent="."]
-position = Vector2(104, 0)
+[node name="Background" type="ColorRect" parent="."]
+z_index = -100
+material = SubResource("ShaderMaterial_abm7k")
+offset_right = 1160.0
+offset_bottom = 648.0
 
 [node name="Label3D" type="Label" parent="."]
 offset_left = 456.0
@@ -39,6 +41,7 @@ offset_right = 1046.0
 offset_bottom = 112.0
 
 [node name="CardDefine" type="TextureRect" parent="."]
+z_index = -1
 offset_left = 213.0
 offset_top = 166.0
 offset_right = 426.0
@@ -47,11 +50,12 @@ script = ExtResource("3_tn68i")
 text = "This is a card. I think"
 
 [node name="PanelContainer" type="PanelContainer" parent="CardDefine"]
+visible = false
 layout_mode = 0
-offset_left = -171.0
-offset_top = -11.0
-offset_right = -135.0
-offset_bottom = 12.0
+offset_left = 78.0
+offset_top = -31.0
+offset_right = 114.0
+offset_bottom = -8.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CardDefine/PanelContainer"]
 layout_mode = 2
@@ -60,5 +64,67 @@ layout_mode = 2
 layout_mode = 2
 text = "TEST"
 
+[node name="CardDefine2" type="TextureRect" parent="."]
+z_index = -1
+offset_left = 430.0
+offset_top = 166.0
+offset_right = 643.0
+offset_bottom = 474.0
+script = ExtResource("3_tn68i")
+text = "This is a card. I think"
+
+[node name="PanelContainer" type="PanelContainer" parent="CardDefine2"]
+visible = false
+layout_mode = 0
+offset_left = 82.0
+offset_top = -31.0
+offset_right = 118.0
+offset_bottom = -8.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CardDefine2/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CardDefine2/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="CardDefine3" type="TextureRect" parent="."]
+z_index = -1
+offset_left = 646.0
+offset_top = 166.0
+offset_right = 859.0
+offset_bottom = 474.0
+script = ExtResource("3_tn68i")
+text = "This is a card. I think"
+
+[node name="PanelContainer" type="PanelContainer" parent="CardDefine3"]
+visible = false
+layout_mode = 0
+offset_left = 86.0
+offset_top = -32.0
+offset_right = 122.0
+offset_bottom = -9.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CardDefine3/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CardDefine3/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "TEST"
+
+[node name="Card1Spawn" type="Node2D" parent="."]
+position = Vector2(-112, 0)
+
+[node name="Card2Spawn" type="Node2D" parent="."]
+position = Vector2(-4, 0)
+
+[node name="Card3Spawn" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(104, 0)
+
 [connection signal="mouse_entered" from="CardDefine" to="CardDefine" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CardDefine" to="CardDefine" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CardDefine2" to="CardDefine2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CardDefine2" to="CardDefine2" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="CardDefine3" to="CardDefine3" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CardDefine3" to="CardDefine3" method="_on_mouse_exited"]

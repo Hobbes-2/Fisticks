@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmi6hgjgwlyu1"]
+[gd_scene load_steps=6 format=3 uid="uid://dmi6hgjgwlyu1"]
 
 [ext_resource type="PackedScene" uid="uid://cgpdxal81nqrp" path="res://Scenes/2D Scenes/carasoul_menu.tscn" id="1_scaxw"]
 [ext_resource type="Texture2D" uid="uid://28it22qxj50c" path="res://images/Misc/icon.svg" id="3_2jtby"]
 [ext_resource type="Texture2D" uid="uid://vj7you61erik" path="res://Sprites/Screenshot 2025-09-28 233356.png" id="3_tchjg"]
+[ext_resource type="Shader" uid="uid://d0cnkty4mb20c" path="res://Shaders/BGShader.gdshader" id="4_bltpo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2jtby"]
+shader = ExtResource("4_bltpo")
+shader_parameter/iTime = 100000.0
 
 [node name="MapSelect" type="Control"]
 layout_mode = 3
@@ -29,5 +34,13 @@ stretch_mode = 2
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 123.0
+pivot_offset = Vector2(64, 88)
 texture = ExtResource("3_tchjg")
 stretch_mode = 2
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -100
+material = SubResource("ShaderMaterial_2jtby")
+layout_mode = 0
+offset_right = 1160.0
+offset_bottom = 648.0

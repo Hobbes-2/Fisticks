@@ -3,7 +3,7 @@ extends Node2D
 @onready var which_player: Label = $WhichPlayer
 @export var player1 : CharacterBody3D
 #SO MANY CARDSSDSDSDSDASS
-var card1 = preload("res://Scenes/2D Scenes/Cards/test_card.tscn")
+#var card1 = preload("res://Scenes/2D Scenes/Cards/test_card.tscn")
 var damage_I = preload("res://Scenes/2D Scenes/Cards/damage_i.tscn")
 var damage_II = preload("res://Scenes/2D Scenes/Cards/damage_ii.tscn")
 var health_I = preload("res://Scenes/2D Scenes/Cards/health_i.tscn")

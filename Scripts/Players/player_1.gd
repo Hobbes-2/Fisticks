@@ -37,7 +37,7 @@ var damage = GlobalCards.player1Damage
 #KNOCKBACK VARS
 var is_knockback = false
 var knockback_timer = 0.0
-var knockback_duration = 0.3
+var knockback_duration = 0.5
 var knockbackVal = 1.0
 
 func _ready() -> void:
@@ -179,6 +179,7 @@ func handle_double_tap(action: String, face_direction: float, dodge_offset: floa
 		animations.play("Tpose_001|Idle")
 
 func _on_hit_box_area_entered(area: Area3D) -> void:
+
 	print("Player1 Health = " + str(health))
 	if area == low_death:
 		death()
@@ -189,7 +190,11 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		self.percentage += damage
 		health -= player2.damage
 		self.kb = knockbackVal
-		angle = rotation_degrees.y
+		if player2.global_position.x < global_position.x:
+			angle = 135
+		elif player2.global_position.x >= global_position.x:
+			angle = 45
+		print("angle is:" + str(angle))
 		apply_knockback(knockbackVal, angle)
 		animations.play("Tpose_001|TakeHit")
 		shaders.set_surface_override_material(0, wireShader)
@@ -347,8 +352,8 @@ func apply_knockback(kb: float, angle_deg: float) -> void:
 	knockback_timer = knockback_duration
 
 # Calculate velocities
-	var h_vel = get_horizontal_velocity(kb, 35)/5
-	var v_vel = get_vertical_velocity(kb, 35)/5
+	var h_vel = get_horizontal_velocity(kb, angle)/2
+	var v_vel = get_vertical_velocity(kb, angle)/4
 
 	velocity.x = h_vel
 	velocity.y = v_vel

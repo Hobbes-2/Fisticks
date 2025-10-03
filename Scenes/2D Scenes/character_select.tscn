@@ -1,22 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://futp2yl0qwsq"]
+[gd_scene load_steps=8 format=3 uid="uid://futp2yl0qwsq"]
 
 [ext_resource type="Texture2D" uid="uid://cfu7an1plyutm" path="res://images/Misc/p1_select.png" id="1_i4d8v"]
 [ext_resource type="Script" uid="uid://bow21fah4ocw5" path="res://Scenes/2D Scenes/CosmeticSel.gd" id="1_iyryb"]
 [ext_resource type="PackedScene" uid="uid://ejsp5vmwx5v6" path="res://Models/Player/Orange/stickman_orange_newest.tscn" id="4_i4d8v"]
 [ext_resource type="PackedScene" uid="uid://cgpdxal81nqrp" path="res://Scenes/2D Scenes/carasoul_menu.tscn" id="4_iyryb"]
 [ext_resource type="Texture2D" uid="uid://28it22qxj50c" path="res://images/Misc/icon.svg" id="4_o6d7f"]
+[ext_resource type="Shader" uid="uid://d0cnkty4mb20c" path="res://Shaders/BGShader.gdshader" id="6_nh36g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6d7f"]
+shader = ExtResource("6_nh36g")
+shader_parameter/iTime = 100000.0
 
 [node name="CharacterSelect" type="Node3D"]
 script = ExtResource("1_iyryb")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -100
+material = SubResource("ShaderMaterial_o6d7f")
+offset_right = 1160.0
+offset_bottom = 648.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 directional_shadow_max_distance = 1.0
-
-[node name="Camera2D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
-current = true
 
 [node name="P1Model" parent="." instance=ExtResource("4_i4d8v")]
 transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -1.8999999, 0, 8.305163e-08)
@@ -154,5 +161,11 @@ offset_top = 280.0
 offset_right = 565.0
 offset_bottom = 311.0
 text = "Next"
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Camera2D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+current = true
 
 [connection signal="pressed" from="Next" to="." method="_on_next_pressed"]

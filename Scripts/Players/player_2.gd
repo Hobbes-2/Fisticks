@@ -37,7 +37,7 @@ var damage = GlobalCards.player1Damage
 #KNOCKBACK VARS
 var is_knockback = false
 var knockback_timer = 0.0
-var knockback_duration = 0.3
+var knockback_duration = 0.5
 var knockbackVal = 1.0
 
 @export var angle = 90
@@ -185,7 +185,7 @@ func handle_double_tap(action: String, face_direction: float, dodge_offset: floa
 		animations.play("Tpose_001|Idle")
 
 func _on_hit_box_area_entered(area: Area3D) -> void:
-	print("player1 Health = " + str(health))
+	print("player2 Health = " + str(health))
 	if area == low_death:
 		death()
 		#IF YOU CHANGE ANY NODES OR ADD ANY NODES IN THE PLAYER TREE THEN CHECK TO MAKE SURE THIS STILL WORKS
@@ -195,6 +195,10 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		self.percentage += damage
 		health -= player1.damage
 		self.kb = knockbackVal
+		if player1.global_position.x < global_position.x:
+			angle = 135
+		elif player1.global_position.x >= global_position.x:
+			angle = 45
 		apply_knockback(knockbackVal, angle)
 		animations.play("Tpose_001|TakeHit")
 		shaders.set_surface_override_material(0, wireShader)
@@ -259,9 +263,11 @@ const DEG2RAD = PI / 180
 func get_horizontal_velocity(kb: float, angle_deg: float) -> float:
 	var angle_rad = angle_deg * DEG2RAD
 	#If you put tan in here instead of cos its funny
+	print("horizontal vel is: " + str(round(kb * 30 * cos(angle_rad) * 100000) / 100000))
 	return -round(kb * 30 * cos(angle_rad) * 100000) / 100000
 func get_vertical_velocity(kb: float, angle_deg: float) -> float:
 	var angle_rad = angle_deg * DEG2RAD
+
 	return round(kb * 30 * sin(angle_rad) * 100000) / 100000
 
 
@@ -347,8 +353,10 @@ func apply_knockback(kb: float, angle_deg: float) -> void:
 	knockback_timer = knockback_duration
 
 # Calculate velocities
-	var h_vel = get_horizontal_velocity(kb, 35)/5
-	var v_vel = get_vertical_velocity(kb, 35)/5
+	var h_vel = get_horizontal_velocity(kb, angle)/2
+	var v_vel = get_vertical_velocity(kb, angle)/4
 
 	velocity.x = h_vel
 	velocity.y = v_vel
+
+	print("knockback running")
