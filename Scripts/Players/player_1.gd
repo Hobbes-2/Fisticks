@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+@onready var fall_effect: GPUParticles3D = $FallEffect
+@onready var hit_vfx: Node3D = $HitVFX
+#@onready var hit_vfx: Node3D = $CanvasLayer/HitVFX
 @onready var punch_area: Area3D = $"Punch Area"
 @onready var punch_timer: Timer = $PunchTimer
 @onready var standing_collision: CollisionShape3D = $StandingCollision
@@ -11,7 +14,7 @@ extends CharacterBody3D
 @export var debug : bool
 @onready var sounds: AudioStreamPlayer = $Sounds
 #SHADER STUFF
-@onready var shaders: MeshInstance3D = $"../CameraController/Camera3D2/Shaders"
+#@onready var shaders: MeshInstance3D = $"../CameraController/Camera3D2/Shaders"
 var wireShader = preload("res://Shaders/GreenCrt.tres")
 var outlineShader = preload("res://Shaders/CellShader.tres")
 var current_hitstop
@@ -40,12 +43,15 @@ var knockback_timer = 0.0
 var knockback_duration = 0.5
 var knockbackVal = 1.0
 
+var was_on_floor : bool = true
+
 func _ready() -> void:
 	stickman_1new.get_child(4).add_child(CosmeticManager.p1hat.instantiate())
 	punch_collision.disabled = true
 	SPEED = NORMAL_SPEED
 	animations = stickman_1new.animation_player
-	shaders.set_surface_override_material(0, outlineShader)
+	#shaders.set_surface_override_material(0, outlineShader)
+
 
 func _physics_process(delta: float) -> void:
 	current_timestamp += delta * 1000
@@ -97,6 +103,10 @@ func _physics_process(delta: float) -> void:
 		current_timestamp = 0
 		velocity.y = JUMP_VELOCITY
 
+	if velocity.y > 0:
+		was_on_floor = false
+
+
 	# Punching
 	if Input.is_action_just_pressed("P1Punch") and punch_timer.timeout:
 		animations.play("Tpose_001|Punch")
@@ -116,6 +126,10 @@ func _physics_process(delta: float) -> void:
 			await animations.animation_finished
 		else:
 			animations.play("Tpose_001|Run")
+
+	if is_on_floor() and !was_on_floor:
+		was_on_floor = true
+		fall_effect.emitting = true
 
 	# Double tap detection (left/right)
 	handle_double_tap("P1Left", 180, -1)
@@ -197,13 +211,15 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		print("angle is:" + str(angle))
 		apply_knockback(knockbackVal, angle)
 		animations.play("Tpose_001|TakeHit")
-		shaders.set_surface_override_material(0, wireShader)
+		#shaders.set_surface_override_material(0, wireShader)
 		#FRAME PAUSE CODE!
-		hitStopShort()
+		hitStopMedium()
 		#IN OTHER INSTANCES CHANGE HITSTOPLONG() TO HITSTOPSHORT OR MEDIUM
-		while await hitStopShort():
+		while await hitStopMedium():
 			return
-		shaders.set_surface_override_material(0, outlineShader)
+		hit_vfx.anims.play("hit")
+		#shaders.set_surface_override_material(0, outlineShader)
+		hit_vfx.anims.play("midair")
 	if health <= 0:
 		print("Player1 Died")
 		hitStopLong()

@@ -11,7 +11,7 @@ extends CharacterBody3D
 @export var debug : bool
 @onready var sounds: AudioStreamPlayer = $Sounds
 #SHADER STUFF
-@onready var shaders: MeshInstance3D = $"../CameraController/Camera3D2/Shaders"
+#@onready var shaders: MeshInstance3D = $"../CameraController/Camera3D2/Shaders"
 var wireShader = preload("res://Shaders/GreenCrt.tres")
 var outlineShader = preload("res://Shaders/CellShader.tres")
 var current_hitstop
@@ -51,7 +51,7 @@ func _ready() -> void:
 	punch_collision.disabled = true
 	SPEED = NORMAL_SPEED
 	animations = stickman_2new.animation_player
-	shaders.set_surface_override_material(0, outlineShader)
+	#shaders.set_surface_override_material(0, outlineShader)
 
 func _physics_process(delta: float) -> void:
 	current_timestamp += delta * 1000
@@ -201,13 +201,13 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 			angle = 45
 		apply_knockback(knockbackVal, angle)
 		animations.play("Tpose_001|TakeHit")
-		shaders.set_surface_override_material(0, wireShader)
+		#shaders.set_surface_override_material(0, wireShader)
 		#FRAME PAUSE CODE!
-		hitStopShort()
+		hitStopMedium()
 		#IN OTHER INSTANCES CHANGE HITSTOPLONG() TO HITSTOPSHORT OR MEDIUM
-		while await hitStopShort():
+		while await hitStopMedium():
 			return
-		shaders.set_surface_override_material(0, outlineShader)
+		#shaders.set_surface_override_material(0, outlineShader)
 	if health <= 0:
 		print("player1 Died")
 		hitStopLong()

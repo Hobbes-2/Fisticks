@@ -105,11 +105,11 @@ void fragment() {
     float warpFreq = 1.2;
 	//this number bigger = weird wave like patterns - hobbes
     float warpAmp = 0.20;
-    
+
     vec2 samplePos = center;
     samplePos.x *= SCREEN_PIXEL_SIZE.y / SCREEN_PIXEL_SIZE.x;
     samplePos += 0.5;
-    
+
     vec2 warp = vec2(
         snoise((samplePos * warpFreq) + vec2(TIME * 0.2, -TIME * 0.15)),
         snoise((samplePos * warpFreq*1.3) + vec2(-TIME * 0.1, TIME * 0.25))
@@ -117,11 +117,11 @@ void fragment() {
     samplePos += warp * warpAmp;
 
     float f1 = worleyF1(samplePos, jitter);
-    float shaped = pow(1.0 - f1 * 0.5, roundness); 
-    
+    float shaped = pow(1.0 - f1 * 0.5, roundness);
+
     // idk random numbers I pulled out of nowhere
 	//Changes the levl at which the two colors divide, higher is more bottom color, negative is more top color - hobbes
-    float detail = 0.0;
+    float detail = 0.5;
     detail += 0.4 * snoise((samplePos * 0.4) + vec2(time* 0.25, -time * 0.6));
     detail += 0.5 * snoise((samplePos * 2.4) + vec2(-time * 0.3, -time * 1.4));
     shaped = shaped * 0.8 + detail * 0.3;
@@ -129,7 +129,7 @@ void fragment() {
     //vec3 color1 = vec3(89.0, 44.0, 255.0) / 255.0;  // #592CFF - purple
     vec3 color1 = vec3(255.0, 99.0, 71.0) / 255.0;  // #ff6347  - tomato
     vec3 color2 = vec3(237.0, 255.0, 10.0) / 255.0; // #EDFF0A - yellow
-    
+
     float threshold = 0.5 - invertedSmoothstep(center.y) * 0.8;
     vec3 col = threshold > shaped ? color1 : color2;
     COLOR = vec4(col, 1.0);
