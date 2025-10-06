@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhkitj27qtd7o"]
+[gd_scene load_steps=15 format=3 uid="uid://dhkitj27qtd7o"]
 
+[ext_resource type="Environment" uid="uid://hc4kbj8e1ldb" path="res://Scenes/WorldEnv.tres" id="1_bawlw"]
 [ext_resource type="ArrayMesh" uid="uid://bo1fqb26rfmh4" path="res://Models/StonePlatform.obj" id="1_wlapn"]
 [ext_resource type="Material" uid="uid://dd0qyg4ow6l5b" path="res://Textures/GrassTexture/Grass.tres" id="2_wlapn"]
 [ext_resource type="ArrayMesh" uid="uid://briha30pdus61" path="res://Models/tree_pack_v_0_1/dist/obj_mtl/tree-branched.obj" id="3_1efcw"]
@@ -9,15 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bvcl0ijif4ctd" path="res://Scenes/Players/Player 2/player_2.tscn" id="7_436e4"]
 [ext_resource type="PackedScene" uid="uid://dgt52bh7hiyyj" path="res://Scenes/Nonvisibles/low_death.tscn" id="8_w8qif"]
 [ext_resource type="PackedScene" uid="uid://3aj5tyl6vd5r" path="res://Scenes/Nonvisibles/camera_controller.tscn" id="9_04oj5"]
-
-[sub_resource type="Sky" id="Sky_04oj5"]
-
-[sub_resource type="Environment" id="Environment_bawlw"]
-background_mode = 2
-sky = SubResource("Sky_04oj5")
-glow_enabled = true
-fog_enabled = true
-volumetric_fog_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3k4nc"]
 size = Vector3(20.657715, 1, 6)
@@ -38,7 +30,7 @@ shadow_enabled = true
 directional_shadow_max_distance = 1.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_bawlw")
+environment = ExtResource("1_bawlw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -94,15 +86,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.307617, 6, -2)
 player1 = NodePath("../Player1")
 player2 = NodePath("../Player2")
 
-[node name="Player1" parent="." node_paths=PackedStringArray("player2", "low_death") instance=ExtResource("6_dxmm1")]
+[node name="Player1" parent="." node_paths=PackedStringArray("camera_control", "player2", "low_death") instance=ExtResource("6_dxmm1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.2694931, -2)
+camera_control = NodePath("../CameraController")
 player2 = NodePath("../Player2")
 low_death = NodePath("../LowDeath")
 
-[node name="Player2" parent="." node_paths=PackedStringArray("player1", "low_death") instance=ExtResource("7_436e4")]
+[node name="Player2" parent="." node_paths=PackedStringArray("camera_control", "player1", "low_death", "world_env", "dir_light") instance=ExtResource("7_436e4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5, 3, -2)
+camera_control = NodePath("../CameraController")
 player1 = NodePath("../Player1")
 low_death = NodePath("../LowDeath")
+world_env = NodePath("../WorldEnvironment")
+dir_light = NodePath("../DirectionalLight3D")
 
 [node name="LowDeath" parent="." instance=ExtResource("8_w8qif")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -2)

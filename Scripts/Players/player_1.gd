@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+@export var camera_control : Node3D
 @onready var fall_effect: GPUParticles3D = $FallEffect
 @onready var hit_vfx: Node3D = $HitVFX
 #@onready var hit_vfx: Node3D = $CanvasLayer/HitVFX
@@ -29,6 +30,11 @@ var CROUCHING_SPEED = NORMAL_SPEED / 2
 const JUMP_VELOCITY = 5
 var health = GlobalCards.player1Health
 
+#WAVEDASH
+var perfect_wavedash_modif = 1
+var dashing = false
+
+
 var going_left : bool = false
 var going_right : bool = false
 
@@ -49,7 +55,7 @@ func _ready() -> void:
 	stickman_1new.get_child(4).add_child(CosmeticManager.p1hat.instantiate())
 	punch_collision.disabled = true
 	SPEED = NORMAL_SPEED
-	animations = stickman_1new.animation_player
+	animations = stickman_1new.anims
 	#shaders.set_surface_override_material(0, outlineShader)
 
 
@@ -87,12 +93,15 @@ func _physics_process(delta: float) -> void:
 		if not is_knockback:
 			velocity.y = 0
 
+	if velocity.y > 0:
+		was_on_floor = false
+
 	# Movement
 	var movement_dir = (
 		Input.get_action_strength("P1Left") -
 		Input.get_action_strength("P1Right")
 	)
-	if movement_dir != 0:
+	if movement_dir != 0 and dashing == false:
 		velocity.x = -movement_dir * SPEED / 2
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -102,9 +111,6 @@ func _physics_process(delta: float) -> void:
 		animations.play("Tpose_001|JumpForward")
 		current_timestamp = 0
 		velocity.y = JUMP_VELOCITY
-
-	if velocity.y > 0:
-		was_on_floor = false
 
 
 	# Punching
@@ -142,7 +148,11 @@ func handle_double_tap(action: String, face_direction: float, dodge_offset: floa
 		if going_left and Input.is_action_just_pressed(action) and is_on_floor():
 			rotation_degrees.y = face_direction
 			going_left = false
-			position.x += dodge_offset
+			#position.x += dodge_offset
+			dashing = true
+			velocity.x = -(30 / perfect_wavedash_modif)
+			await get_tree().create_timer(0.2).timeout
+			dashing = false
 			if debug:
 				print("P1 Double Left")
 		elif Input.is_action_just_pressed(action):
@@ -153,7 +163,11 @@ func handle_double_tap(action: String, face_direction: float, dodge_offset: floa
 		if going_right and Input.is_action_just_pressed(action) and is_on_floor():
 			rotation_degrees.y = face_direction
 			going_right = false
-			position.x += dodge_offset
+			#position.x += dodge_offset
+			dashing = true
+			velocity.x = 30 / perfect_wavedash_modif
+			await get_tree().create_timer(0.2).timeout
+			dashing = false
 			if debug:
 				print("P1 Double Right")
 		elif Input.is_action_just_pressed(action):
@@ -211,6 +225,8 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 		print("angle is:" + str(angle))
 		apply_knockback(knockbackVal, angle)
 		animations.play("Tpose_001|TakeHit")
+		stickman_1new.hitFlash()
+		camera_control.get_child(0).screen_shake(1.0, 1.0)
 		#shaders.set_surface_override_material(0, wireShader)
 		#FRAME PAUSE CODE!
 		hitStopMedium()

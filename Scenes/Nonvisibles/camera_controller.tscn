@@ -1,11 +1,28 @@
-[gd_scene load_steps=10 format=3 uid="uid://3aj5tyl6vd5r"]
+[gd_scene load_steps=16 format=3 uid="uid://3aj5tyl6vd5r"]
 
 [ext_resource type="Script" uid="uid://c3fbetr4xbgj5" path="res://Scripts/camera_controller.gd" id="1_61mff"]
+[ext_resource type="Script" uid="uid://b6apgtlnd327n" path="res://Scenes/Nonvisibles/camera_3d_2.gd" id="2_0r2fk"]
 [ext_resource type="Shader" uid="uid://cpvcemh7bv8lh" path="res://Shaders/ACTUALCellShading.gdshader" id="2_43hli"]
 [ext_resource type="Texture2D" uid="uid://bkqv5mmp0ataj" path="res://images/Misc/icon.jpg" id="2_n4n8w"]
+[ext_resource type="Shader" uid="uid://bg3b8x6uc45wb" path="res://Shaders/ImpactFrame.gdshader" id="2_xfq55"]
 [ext_resource type="Shader" uid="uid://bbbvpdn5mvhgq" path="res://Shaders/CellShader.gdshader" id="3_xfq55"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfq55"]
+render_priority = 0
+shader = ExtResource("3_xfq55")
+shader_parameter/depth_threshold = 0.05
+
+[sub_resource type="QuadMesh" id="QuadMesh_n4n8w"]
+material = SubResource("ShaderMaterial_xfq55")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_meknx"]
+render_priority = 0
+shader = ExtResource("3_xfq55")
+shader_parameter/depth_threshold = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjt6g"]
 render_priority = 0
 shader = ExtResource("2_43hli")
 shader_parameter/light_direction = Vector3(0.5, 0, 0)
@@ -20,15 +37,17 @@ shader_parameter/smoothness = 0.1
 shader_parameter/roughness = 1.0
 shader_parameter/roughness_channel = 0
 
-[sub_resource type="QuadMesh" id="QuadMesh_n4n8w"]
-material = SubResource("ShaderMaterial_xfq55")
+[sub_resource type="QuadMesh" id="QuadMesh_0r2fk"]
+material = SubResource("ShaderMaterial_mjt6g")
 flip_faces = true
-size = Vector2(2, 2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_meknx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oiqp4"]
 render_priority = 0
-shader = ExtResource("3_xfq55")
-shader_parameter/depth_threshold = 0.05
+shader = ExtResource("2_xfq55")
+
+[sub_resource type="QuadMesh" id="QuadMesh_d1w8x"]
+material = SubResource("ShaderMaterial_oiqp4")
+flip_faces = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43hli"]
 albedo_texture = ExtResource("2_n4n8w")
@@ -40,6 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 script = ExtResource("1_61mff")
 
 [node name="Camera3D2" type="Camera3D" parent="."]
+script = ExtResource("2_0r2fk")
 
 [node name="P1Health" type="Label3D" parent="Camera3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, -1, -2)
@@ -69,7 +89,12 @@ surface_material_override/0 = SubResource("ShaderMaterial_meknx")
 
 [node name="Shaders2" type="MeshInstance3D" parent="Camera3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-mesh = SubResource("QuadMesh_n4n8w")
+mesh = SubResource("QuadMesh_0r2fk")
+
+[node name="Shaders3" type="MeshInstance3D" parent="Camera3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+visible = false
+mesh = SubResource("QuadMesh_d1w8x")
 
 [node name="MidPoint2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.1, -2)

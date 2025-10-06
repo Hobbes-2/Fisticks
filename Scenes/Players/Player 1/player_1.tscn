@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://2frmar6v358"]
+[gd_scene load_steps=19 format=3 uid="uid://2frmar6v358"]
 
 [ext_resource type="Script" uid="uid://dqwkni2gtfme6" path="res://Scripts/Players/player_1.gd" id="1_2mvbs"]
 [ext_resource type="Texture2D" uid="uid://dmjcvfupo1ad2" path="res://prototype_textures/textures/orange_texture.png" id="2_ifihs"]
 [ext_resource type="ArrayMesh" uid="uid://iuukx63ioh3y" path="res://Models/Stickman1.obj" id="2_tmdyv"]
 [ext_resource type="AudioStream" uid="uid://dtbnt2yaa60pi" path="res://Audio/SFX/HitSFX1.mp3" id="4_ru8ij"]
-[ext_resource type="Script" uid="uid://ccb2hvdli1m4a" path="res://Models/stickman_model.gd" id="6_ex3ms"]
 [ext_resource type="PackedScene" uid="uid://ejsp5vmwx5v6" path="res://Models/Player/Orange/stickman_orange_newest.tscn" id="6_hl6q1"]
 [ext_resource type="PackedScene" uid="uid://cmuepyihdnnoy" path="res://Scenes/2D Scenes/hit_vfx.tscn" id="7_ex3ms"]
 [ext_resource type="Texture2D" uid="uid://c2snxbja1cb30" path="res://images/FootageCrate-4K_Anime_Dust_Speed_Waves_2-prev-full-1801725170-removebg-preview.png" id="8_lx4jy"]
@@ -34,12 +33,12 @@ shader_parameter/HitTexture = ExtResource("8_lx4jy")
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_r552j"]
+[sub_resource type="CurveTexture" id="CurveTexture_oq6qh"]
 curve = SubResource("Curve_h4iwr")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h00gb"]
 gravity = Vector3(0, 0, 0)
-alpha_curve = SubResource("CurveTexture_r552j")
+alpha_curve = SubResource("CurveTexture_oq6qh")
 
 [sub_resource type="QuadMesh" id="QuadMesh_0ggg6"]
 size = Vector2(1.5, 1)
@@ -82,10 +81,6 @@ disabled = true
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ru8ij")
 
-[node name="StickmanOrangeNewest" parent="." instance=ExtResource("6_hl6q1")]
-transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, 0, -0.24564573, 0)
-script = ExtResource("6_ex3ms")
-
 [node name="HitVFX" parent="." instance=ExtResource("7_ex3ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1579274, 0.66661847, 0)
 
@@ -97,5 +92,12 @@ lifetime = 0.5
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_h00gb")
 draw_pass_1 = SubResource("QuadMesh_0ggg6")
+
+[node name="StickmanOrangeNewest" parent="." instance=ExtResource("6_hl6q1")]
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, 0, -0.17206806, 0)
+
+[node name="HitLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33845758, 0.68399185, 0)
+visible = false
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

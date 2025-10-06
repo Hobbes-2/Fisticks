@@ -22,6 +22,10 @@ GlobalCards="*res://Scripts/GlobalCards.gd"
 CharacterSelectionManager="*res://Scripts/Globals/CharacterSelectionManager.gd"
 CosmeticManager="*res://Scripts/Globals/CosmeticManager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")

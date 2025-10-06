@@ -17,14 +17,13 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 459.0
 offset_bottom = 35.0
-scale = Vector2(0.2, 0.2)
 theme_override_styles/background = SubResource("StyleBoxFlat_e7g7q")
 show_percentage = false
 
 [node name="P2Health" type="ProgressBar" parent="."]
-offset_left = 694.0
-offset_top = 8.0
-offset_right = 1145.0
-offset_bottom = 35.0
-scale = Vector2(0.2, 0.2)
+offset_left = 692.0
+offset_top = 10.0
+offset_right = 1143.0
+offset_bottom = 37.0
+theme_override_styles/background = SubResource("StyleBoxFlat_e7g7q")
 show_percentage = false

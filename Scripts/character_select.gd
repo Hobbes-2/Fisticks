@@ -109,8 +109,10 @@ func _left():
 			for n in p_2_model.hatadd.get_children():
 				p_2_model.hatadd.remove_child(n)
 				n.queue_free()
-		current_hatp1.queue_free()
-		current_hatp2.queue_free()
+		if Player1:
+			current_hatp1.queue_free()
+		else:
+			current_hatp2.queue_free()
 	selected_index -= 1
 	if selected_index < 0:
 		selected_index += 1
@@ -125,8 +127,10 @@ func _right():
 			for n in p_2_model.hatadd.get_children():
 				p_2_model.hatadd.remove_child(n)
 				n.queue_free()
-		current_hatp1.queue_free()
-		current_hatp2.queue_free()
+		if Player1:
+			current_hatp1.queue_free()
+		else:
+			current_hatp2.queue_free()
 	selected_index += 1
 	if selected_index > position_offset_node.get_child_count() - 1:
 		selected_index -= 1
@@ -145,16 +149,16 @@ func _physics_process(delta: float) -> void:
 			_right()
 
 	if Cosmetics:
-
-		CosmeticManager.p1hat = CosmeticManager.selectableHats[hat_list[selected_index - 1]]
-		#print("p1 hat: " + str(CosmeticManager.p1hat))
-		current_hatp1 = CosmeticManager.p1hat.instantiate()
-		p_1_model.hatadd.add_child(current_hatp1)
-
-		CosmeticManager.p2hat = CosmeticManager.selectableHats[hat_list[selected_index - 1]]
-		#print("p2 hat: " + str(CosmeticManager.p2hat))
-		current_hatp2 = CosmeticManager.p2hat.instantiate()
-		p_2_model.hatadd.add_child(current_hatp2)
+		if Player1:
+			CosmeticManager.p1hat = CosmeticManager.selectableHats[hat_list[selected_index - 1]]
+			#print("p1 hat: " + str(CosmeticManager.p1hat))
+			current_hatp1 = CosmeticManager.p1hat.instantiate()
+			p_1_model.hatadd.add_child(current_hatp1)
+		else:
+			CosmeticManager.p2hat = CosmeticManager.selectableHats[hat_list[selected_index - 1]]
+			#print("p2 hat: " + str(CosmeticManager.p2hat))
+			current_hatp2 = CosmeticManager.p2hat.instantiate()
+			p_2_model.hatadd.add_child(current_hatp2)
 
 	elif Maps:
 		if Input.is_action_just_pressed("ui_accept"):
