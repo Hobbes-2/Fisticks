@@ -1,13 +1,159 @@
-[gd_scene load_steps=6 format=3 uid="uid://j6p0omuydtgx"]
+[gd_scene load_steps=32 format=3 uid="uid://j6p0omuydtgx"]
 
 [ext_resource type="Script" uid="uid://coqmbbgapjjpa" path="res://Scripts/card_choice.gd" id="1_0ku4r"]
-[ext_resource type="Texture2D" uid="uid://cwii1xk8fkew0" path="res://images/SlotsBase1.png" id="2_p6gvu"]
 [ext_resource type="Script" uid="uid://b178fudff2818" path="res://Scenes/Nonvisibles/Spawners/card_define.gd" id="3_tn68i"]
+[ext_resource type="Script" uid="uid://b7jloc8a0e2sb" path="res://Scenes/2D Scenes/card_images.gd" id="3_ur71v"]
+[ext_resource type="Texture2D" uid="uid://brwbes7eo0f63" path="res://images/SlotsBase.png" id="3_vh874"]
+[ext_resource type="Texture2D" uid="uid://bf0m5ffpjqqqe" path="res://images/Cards/DamageI.png" id="4_t047w"]
 [ext_resource type="Shader" uid="uid://d0cnkty4mb20c" path="res://Shaders/BGShader.gdshader" id="4_vh874"]
+[ext_resource type="Texture2D" uid="uid://bw1omiqy53v8q" path="res://images/Cards/DamageII.png" id="5_7kjau"]
+[ext_resource type="Texture2D" uid="uid://mdbalt3r64wm" path="res://images/Cards/HealthI.png" id="6_lkc1l"]
+[ext_resource type="Texture2D" uid="uid://cpn0130edk66d" path="res://images/Cards/HealthII.png" id="7_prhi7"]
+[ext_resource type="Texture2D" uid="uid://bon2pto1yoiqx" path="res://images/Cards/SpeedI.png" id="8_tq78i"]
+[ext_resource type="Texture2D" uid="uid://cs7awaklvp84c" path="res://images/Cards/SpeedII.png" id="9_a2ccx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_abm7k"]
 shader = ExtResource("4_vh874")
 shader_parameter/iTime = 100000.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abm7k"]
+atlas = ExtResource("3_vh874")
+region = Rect2(1280, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr3w5"]
+atlas = ExtResource("3_vh874")
+region = Rect2(1920, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7yfq"]
+atlas = ExtResource("3_vh874")
+region = Rect2(2560, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r568k"]
+atlas = ExtResource("3_vh874")
+region = Rect2(3200, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3vbb"]
+atlas = ExtResource("3_vh874")
+region = Rect2(3840, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onmrx"]
+atlas = ExtResource("3_vh874")
+region = Rect2(4480, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur71v"]
+atlas = ExtResource("3_vh874")
+region = Rect2(5120, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t047w"]
+atlas = ExtResource("3_vh874")
+region = Rect2(5760, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kjau"]
+atlas = ExtResource("3_vh874")
+region = Rect2(6400, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkc1l"]
+atlas = ExtResource("3_vh874")
+region = Rect2(7040, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prhi7"]
+atlas = ExtResource("3_vh874")
+region = Rect2(7680, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq78i"]
+atlas = ExtResource("3_vh874")
+region = Rect2(8320, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2ccx"]
+atlas = ExtResource("3_vh874")
+region = Rect2(8960, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pef1s"]
+atlas = ExtResource("3_vh874")
+region = Rect2(9600, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xym21"]
+atlas = ExtResource("3_vh874")
+region = Rect2(10240, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_233r7"]
+atlas = ExtResource("3_vh874")
+region = Rect2(10880, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6wsw"]
+atlas = ExtResource("3_vh874")
+region = Rect2(11520, 0, 640, 960)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq5et"]
+atlas = ExtResource("3_vh874")
+region = Rect2(640, 0, 640, 960)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aq5et"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abm7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr3w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7yfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r568k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3vbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onmrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur71v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t047w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kjau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkc1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prhi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tq78i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2ccx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pef1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xym21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_233r7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6wsw")
+}],
+"loop": true,
+"name": &"Spinning",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq5et")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="CardChoice" type="Node2D"]
 script = ExtResource("1_0ku4r")
@@ -18,6 +164,185 @@ material = SubResource("ShaderMaterial_abm7k")
 offset_right = 1160.0
 offset_bottom = 648.0
 
+[node name="CardImages1" type="Node2D" parent="."]
+position = Vector2(320, 469.5)
+scale = Vector2(1.61, 1.61)
+script = ExtResource("3_ur71v")
+
+[node name="Damage1" type="Sprite2D" parent="CardImages1" groups=["CardImages"]]
+position = Vector2(0.024887938, 95.37888)
+texture = ExtResource("4_t047w")
+
+[node name="Damage2" type="Sprite2D" parent="CardImages1" groups=["CardImages"]]
+position = Vector2(0.02485306, 287.37885)
+texture = ExtResource("5_7kjau")
+
+[node name="Health1" type="Sprite2D" parent="CardImages1" groups=["CardImages"]]
+position = Vector2(0.024887938, 479.37888)
+texture = ExtResource("6_lkc1l")
+
+[node name="Health2" type="Sprite2D" parent="CardImages1" groups=["CardImages"]]
+position = Vector2(0.024887938, 671.3789)
+texture = ExtResource("7_prhi7")
+
+[node name="Speed1" type="Sprite2D" parent="CardImages1" groups=["CardImages"]]
+position = Vector2(0.024887938, 863.3789)
+texture = ExtResource("8_tq78i")
+
+[node name="Speed2" type="Sprite2D" parent="CardImages1" groups=["CardImages"]]
+position = Vector2(0.024887938, 1055.3789)
+texture = ExtResource("9_a2ccx")
+
+[node name="CardImages2" type="Node2D" parent="."]
+position = Vector2(538, 469.5)
+scale = Vector2(1.61, 1.61)
+script = ExtResource("3_ur71v")
+
+[node name="Damage1" type="Sprite2D" parent="CardImages2" groups=["CardImages"]]
+position = Vector2(0.024887938, 95.37888)
+texture = ExtResource("4_t047w")
+
+[node name="Damage2" type="Sprite2D" parent="CardImages2" groups=["CardImages"]]
+position = Vector2(0.02485306, 287.37885)
+texture = ExtResource("5_7kjau")
+
+[node name="Health1" type="Sprite2D" parent="CardImages2" groups=["CardImages"]]
+position = Vector2(0.024887938, 479.37888)
+texture = ExtResource("6_lkc1l")
+
+[node name="Health2" type="Sprite2D" parent="CardImages2" groups=["CardImages"]]
+position = Vector2(0.024887938, 671.3789)
+texture = ExtResource("7_prhi7")
+
+[node name="Speed1" type="Sprite2D" parent="CardImages2" groups=["CardImages"]]
+position = Vector2(0.024887938, 863.3789)
+texture = ExtResource("8_tq78i")
+
+[node name="Speed2" type="Sprite2D" parent="CardImages2" groups=["CardImages"]]
+position = Vector2(0.024887938, 1055.3789)
+texture = ExtResource("9_a2ccx")
+
+[node name="CardImages3" type="Node2D" parent="."]
+position = Vector2(756, 469.5)
+scale = Vector2(1.61, 1.61)
+script = ExtResource("3_ur71v")
+
+[node name="Damage1" type="Sprite2D" parent="CardImages3" groups=["CardImages"]]
+position = Vector2(0.024868982, 96)
+texture = ExtResource("4_t047w")
+
+[node name="Damage2" type="Sprite2D" parent="CardImages3" groups=["CardImages"]]
+position = Vector2(0.024834104, 287.99994)
+texture = ExtResource("5_7kjau")
+
+[node name="Health1" type="Sprite2D" parent="CardImages3" groups=["CardImages"]]
+position = Vector2(0.024868982, 480)
+texture = ExtResource("6_lkc1l")
+
+[node name="Health2" type="Sprite2D" parent="CardImages3" groups=["CardImages"]]
+position = Vector2(0.024868982, 672)
+texture = ExtResource("7_prhi7")
+
+[node name="Speed1" type="Sprite2D" parent="CardImages3" groups=["CardImages"]]
+position = Vector2(0.024868982, 864)
+texture = ExtResource("8_tq78i")
+
+[node name="Speed2" type="Sprite2D" parent="CardImages3" groups=["CardImages"]]
+position = Vector2(0.024868982, 1056)
+texture = ExtResource("9_a2ccx")
+
+[node name="CardImages32" type="Node2D" parent="."]
+position = Vector2(756, -1382)
+scale = Vector2(1.61, 1.61)
+script = ExtResource("3_ur71v")
+
+[node name="Damage1" type="Sprite2D" parent="CardImages32" groups=["CardImages"]]
+position = Vector2(0.024868982, 96)
+texture = ExtResource("4_t047w")
+
+[node name="Damage2" type="Sprite2D" parent="CardImages32" groups=["CardImages"]]
+position = Vector2(0.024834104, 287.99994)
+texture = ExtResource("5_7kjau")
+
+[node name="Health1" type="Sprite2D" parent="CardImages32" groups=["CardImages"]]
+position = Vector2(0.024868982, 480)
+texture = ExtResource("6_lkc1l")
+
+[node name="Health2" type="Sprite2D" parent="CardImages32" groups=["CardImages"]]
+position = Vector2(0.024868982, 672)
+texture = ExtResource("7_prhi7")
+
+[node name="Speed1" type="Sprite2D" parent="CardImages32" groups=["CardImages"]]
+position = Vector2(0.024868982, 864)
+texture = ExtResource("8_tq78i")
+
+[node name="Speed2" type="Sprite2D" parent="CardImages32" groups=["CardImages"]]
+position = Vector2(0.024868982, 1056)
+texture = ExtResource("9_a2ccx")
+
+[node name="CardImages12" type="Node2D" parent="."]
+position = Vector2(320, -1382)
+scale = Vector2(1.61, 1.61)
+script = ExtResource("3_ur71v")
+
+[node name="Damage1" type="Sprite2D" parent="CardImages12" groups=["CardImages"]]
+position = Vector2(0.024887938, 95.37888)
+texture = ExtResource("4_t047w")
+
+[node name="Damage2" type="Sprite2D" parent="CardImages12" groups=["CardImages"]]
+position = Vector2(0.02485306, 287.37885)
+texture = ExtResource("5_7kjau")
+
+[node name="Health1" type="Sprite2D" parent="CardImages12" groups=["CardImages"]]
+position = Vector2(0.024887938, 479.37888)
+texture = ExtResource("6_lkc1l")
+
+[node name="Health2" type="Sprite2D" parent="CardImages12" groups=["CardImages"]]
+position = Vector2(0.024887938, 671.3789)
+texture = ExtResource("7_prhi7")
+
+[node name="Speed1" type="Sprite2D" parent="CardImages12" groups=["CardImages"]]
+position = Vector2(0.024887938, 863.3789)
+texture = ExtResource("8_tq78i")
+
+[node name="Speed2" type="Sprite2D" parent="CardImages12" groups=["CardImages"]]
+position = Vector2(0.024887938, 1055.3789)
+texture = ExtResource("9_a2ccx")
+
+[node name="CardImages22" type="Node2D" parent="."]
+position = Vector2(538, -1382)
+scale = Vector2(1.61, 1.61)
+script = ExtResource("3_ur71v")
+
+[node name="Damage1" type="Sprite2D" parent="CardImages22" groups=["CardImages"]]
+position = Vector2(0.024887938, 95.37888)
+texture = ExtResource("4_t047w")
+
+[node name="Damage2" type="Sprite2D" parent="CardImages22" groups=["CardImages"]]
+position = Vector2(0.02485306, 287.37885)
+texture = ExtResource("5_7kjau")
+
+[node name="Health1" type="Sprite2D" parent="CardImages22" groups=["CardImages"]]
+position = Vector2(0.024887938, 479.37888)
+texture = ExtResource("6_lkc1l")
+
+[node name="Health2" type="Sprite2D" parent="CardImages22" groups=["CardImages"]]
+position = Vector2(0.024887938, 671.3789)
+texture = ExtResource("7_prhi7")
+
+[node name="Speed1" type="Sprite2D" parent="CardImages22" groups=["CardImages"]]
+position = Vector2(0.024887938, 863.3789)
+texture = ExtResource("8_tq78i")
+
+[node name="Speed2" type="Sprite2D" parent="CardImages22" groups=["CardImages"]]
+position = Vector2(0.024887938, 1055.3789)
+texture = ExtResource("9_a2ccx")
+
+[node name="SlotsBase1" type="AnimatedSprite2D" parent="."]
+position = Vector2(536, 608)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_aq5et")
+
 [node name="Label3D" type="Label" parent="."]
 offset_left = 456.0
 offset_top = 64.0
@@ -27,12 +352,6 @@ text = "Super Shifty Shiba Card Select"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 320)
-
-[node name="SlotsBase1" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(536, 608)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_p6gvu")
 
 [node name="WhichPlayer" type="Label" parent="."]
 offset_left = 1006.0
@@ -113,12 +432,15 @@ layout_mode = 2
 text = "TEST"
 
 [node name="Card1Spawn" type="Node2D" parent="."]
+visible = false
 position = Vector2(-112, 0)
 
 [node name="Card2Spawn" type="Node2D" parent="."]
+visible = false
 position = Vector2(-4, 0)
 
 [node name="Card3Spawn" type="Node2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(104, 0)
 

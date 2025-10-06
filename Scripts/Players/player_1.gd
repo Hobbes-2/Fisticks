@@ -175,7 +175,7 @@ func handle_double_tap(action: String, face_direction: float, dodge_offset: floa
 			current_timestamp = 0
 			going_right = true
 
-	if current_timestamp >= 500:
+	if current_timestamp >= 200:
 		going_left = false
 		going_right = false
 
